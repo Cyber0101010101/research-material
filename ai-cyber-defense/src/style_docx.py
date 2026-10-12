@@ -12,6 +12,9 @@ toc_json = sys.argv[2] if len(sys.argv) > 2 and sys.argv[2] else None
 doc = Document(path)
 
 BODY_FONT = "Arial"
+import os
+BODY_PT = float(os.environ.get("BODY_PT", "11"))      # үндсэн текстийн хэмжээ (илтгэлийн үгэнд 13)
+LINE_SP = float(os.environ.get("LINE_SP", "1.15"))   # мөр хоорондын зай
 NAVY = RGBColor(0x1B, 0x2A, 0x41)
 RED = RGBColor(0xC8, 0x10, 0x2E)
 
@@ -45,7 +48,7 @@ def set_font(run, size=None, bold=None, color=None):
 
 # Стилүүд
 styles = doc.styles
-sizes = {"Normal": 11, "Body Text": 11, "First Paragraph": 11, "Compact": 10,
+sizes = {"Normal": BODY_PT, "Body Text": BODY_PT, "First Paragraph": BODY_PT, "Compact": 10,
          "Title": 20, "Subtitle": 13, "Author": 12, "Date": 11,
          "Heading 1": 15, "Heading 2": 13, "Heading 3": 12, "TOC Heading": 14}
 for name, size in sizes.items():
@@ -68,7 +71,7 @@ for name, size in sizes.items():
         st.paragraph_format.alignment = WD_ALIGN_PARAGRAPH.CENTER
     if name in ("Body Text", "First Paragraph", "Normal"):
         st.paragraph_format.space_after = Pt(6)
-        st.paragraph_format.line_spacing = 1.15
+        st.paragraph_format.line_spacing = LINE_SP
     if name == "Heading 1":
         st.paragraph_format.space_before = Pt(18)
     st.paragraph_format.alignment = st.paragraph_format.alignment
