@@ -12,7 +12,7 @@
 | `kiber_haldlagyn_ued_AI_ashiglah_bolomj.pdf` | Мөн материалын PDF хувилбар |
 | `kiber_haldlagyn_ued_AI_ashiglah_bolomj.md` | Markdown эх (засварлахад) |
 | `kiber_haldlagyn_ued_AI_iltgel.pptx` | Чиглүүлэх илтгэлийн слайд (19 слайд, 16:9, слайд бүр илтгэгчийн тэмдэглэлтэй) |
-| `kiber_haldlagyn_ued_AI_iltgeliin_ug.docx` / `.pdf` | 20 минутад унших илтгэлийн үг (слайд бүрээр цагийн хуваарьтай, ~2,300 үг) |
+| `kiber_haldlagyn_ued_AI_iltgeliin_ug.docx` / `.pdf` | 20 минутад унших илтгэлийн үг (слайд бүрээр цагийн хуваарьтай, ~2,400 үг) |
 | `kiber_haldlagyn_ued_AI_iltgeliin_ug.md` | Илтгэлийн үгийн Markdown эх; PPTX-ийн илтгэгчийн тэмдэглэл эндээс автоматаар авагдана |
 | `src/build.sh` | Бүх материалыг бүтээх скрипт: Markdown → DOCX → PDF (pandoc, python-docx, LibreOffice), PPTX (node) |
 | `src/build_pptx.js` | PPTX бүтээх pptxgenjs скрипт (сэдэв, layout, 19 слайд, дүрс тэмдэг, график) |
