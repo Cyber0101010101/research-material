@@ -11,6 +11,8 @@ const sharp = require("sharp");
 const Fa = require("react-icons/fa");
 const { applyTheme } = require(process.env.SKILL_DIR + "/scripts/apply_theme.js");
 const DATA = require("./data.js");
+const SPEECH = require("./speech_mn.js");
+let slideNo = 0;
 
 const OUT = process.argv[2] || "india_mongolia_cyber_cooperation.pptx";
 const IMG = (f) => path.join(__dirname, "..", "images", f);
@@ -95,7 +97,11 @@ function statTile(slide, x, y, w, h, value, label, color, opts = {}) {
   text(slide, value, { x: x + 0.2, y: y + 0.1, w: w - 0.4, h: h * 0.5, fontSize: opts.valueSize || 32, bold: true, color, fontFace: THEME.headFontFace, valign: "middle" });
   text(slide, label, { x: x + 0.2, y: y + h * 0.58, w: w - 0.4, h: h * 0.4, fontSize: opts.labelSize || 10.5, color: C.text2, valign: "top" });
 }
-function notes(slide, mn, en) { slide.addNotes("МН: " + mn + "\n\n" + en); }
+function notes(slide, mn, en) {
+  slideNo += 1;
+  const script = SPEECH[String(slideNo)] || ("МН: " + mn);
+  slide.addNotes(script + "\n\n— EN —\n" + en);
+}
 function dateChip(slide, x, y, w, label, color) {
   slide.addShape(pres.ShapeType.roundRect, { x, y, w, h: 0.34, rectRadius: 0.17, fill: { color }, line: { color, width: 0 }, objectName: "date chip" });
   text(slide, label, { x, y, w, h: 0.34, fontSize: 10.5, bold: true, color: C.background1, align: "center", valign: "middle" });
