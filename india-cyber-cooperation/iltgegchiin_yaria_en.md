@@ -1,0 +1,181 @@
+# India–Mongolia Cooperation in Cyber Security Education
+
+## Speaker script (English)
+
+**Occasion:** 14th consultative meeting of the Defence Ministries of India and Mongolia — visit of the delegation of the Ministry of Defence of India to the Cyber Security Department, Military Institute, National Defence University of Mongolia
+
+**Speaker:** Captain S. Bilegt, Head of the Cyber Security Department
+
+**Duration:** about 21 minutes (23 slides), followed by questions and a tour of the laboratories
+
+**Notation:** `[Slide N]` — slide change; *italics* — stage directions for the speaker, not read aloud.
+
+### Timing
+
+| Part | Slides | Minutes |
+|---|---|---|
+| Opening, welcome, outline | 1–2 | 1.5 |
+| 01. Partnership context | 3–5 | 2.5 |
+| 02. Establishing the Centre | 6–11 | 6.5 |
+| 03. Results 2022–2026 | 12–19 | 7.5 |
+| 04. The road ahead | 20–22 | 3 |
+| Closing | 23 | 0.5 |
+| **Total** | | **≈ 21.5** |
+
+### [Slide 1] Title and welcome — 0.5 min
+
+Honourable Joint Secretary Ms Ishita Ganguli Tripathy, Director Mr Vikash Kumar, Director Colonel Baljit Singh, Defence Attaché Colonel Mupparty Sanjeev, distinguished guests!
+
+Good morning. On behalf of the National Defence University of Mongolia, welcome to the Cyber Security Department. This Department is a tangible result of our cooperation with India. That is why we are especially pleased to receive the delegation of the Ministry of Defence of India in this very building during the 14th consultative meeting of our two Defence Ministries.
+
+### [Slide 2] Outline — 1 min
+
+In this briefing I will cover four things: where this cooperation began, what has been built here with India's support, what it has delivered since 2022, and our proposals and requests for the next phase of cooperation.
+
+After the briefing I will take your questions, and then we will walk through the laboratories together.
+
+### [Slide 3] 01 — Partnership context
+
+*Section slide. One sentence.*
+
+Part one: the foundation on which this Centre was built.
+
+### [Slide 4] Seventy years of friendship, a decade of strategic partnership — 1.5 min
+
+*Point along the timeline from left to right.*
+
+On 24 December 1955 India became the first country outside the Soviet bloc to establish diplomatic relations with Mongolia. The 1994 Treaty of Friendly Relations and Cooperation and the 2001 Agreement on Defence Cooperation laid the legal foundation of the relationship. The consultative meeting that now takes place every year grew out of that 2001 agreement.
+
+In 2015 Prime Minister Narendra Modi visited Mongolia and the two countries established a strategic partnership. For us the most important point is this: on 17 May 2015 the two governments signed the Memorandum to establish a Cyber Security Training Centre at the Ministry of Defence of Mongolia.
+
+That Centre was inaugurated on 6 September 2022 by the two Defence Ministers, during the first-ever visit of an Indian Defence Minister to Mongolia. Last October President Khurelsukh paid a state visit to India marking seventy years of diplomatic relations, and India decided to establish a Defence Wing at its Embassy in Ulaanbaatar.
+
+*Point to the sentence at the bottom.* In short: under the 2015 Memorandum this Centre was built in 2021–2022 and has worked with Indian training teams since 2023. It is the most tangible institution of our defence cooperation.
+
+### [Slide 5] Why cyber — 1 min
+
+Let me answer the question "why cyber" with numbers. In the ITU Global Cybersecurity Index 2024 Mongolia scores 56.4 and ranks 103rd of 193 countries. We have climbed seventeen places since 2020, but we remain below the Asian average. National authorities detect more than ninety thousand cyber attacks in Mongolia every week. The first Law on Cyber Security, adopted in December 2021, gave the Armed Forces a supporting role in protecting critical infrastructure. Fulfilling that role requires trained people.
+
+Cyber has become a standing item on the bilateral agenda: the Indian Ministry of Defence described this Centre, opened in 2022, as a one-of-its-kind cyber-related international cooperation project; the last two editions of the Nomadic Elephant exercise included cyber security modules; and the Cyber Security Military Command of the Mongolian Armed Forces, which sent our first trainees, is the Centre's principal partner. Both armed forces face the same threats — ransomware, espionage, attacks on infrastructure — and the same skills gap.
+
+### [Slide 6] 02 — Establishing the Centre
+
+*Section slide.*
+
+Part two: how the Centre came into being.
+
+### [Slide 7] From the 2015 Memorandum to the 2022 inauguration — 1.5 min
+
+It took seven years from agreement to opening. *Down the timeline on the left.*
+
+The Memorandum was signed on 17 May 2015. In 2021 NDU renovated the first floor of the Military Institute building while two containers of equipment were dispatched from India. In February 2022, 93 types of equipment, software and furniture arrived in Ulaanbaatar. From March to July, Sandeep Kumar, an engineer of C-DAC, India's Centre for Development of Advanced Computing, installed and commissioned the laboratories together with our team.
+
+On 6 September 2022 Defence Minister G. Saikhanbayar and Indian Defence Minister Rajnath Singh opened the Centre. *Point to the photographs on the right.* These are the pictures of that day: the ribbon-cutting and the guard of honour for the Indian Defence Minister.
+
+In January 2023 the Ministry of Defence approved five posts and appointed the head of the Centre and three teachers. In August 2023 the first Indian training team arrived. In July 2025 the Centre became a full department of the Military Institute.
+
+### [Slide 8] India's contribution — 1.5 min
+
+India handed over not a classroom but a complete, fully equipped centre. The supplies were worth about 1.3 billion tugrik: 984 million in equipment, furniture and materials — 93 items in two containers; 68.9 million in cyber security software; and 250.4 million for C-DAC's e-learning system with the content of five courses.
+
+*Point to the six cards on the right.* These systems cover the whole cyber security workflow. Compute and network: seven Cisco servers, NetApp storage, Cisco switches, a WatchGuard firewall and intrusion prevention system, 37 workstations. Digital forensics: Tableau duplicators and write-blockers, Cellebrite, Oxygen, FTK and forensic workstations. Malware analysis: IDA Pro, Hex-Rays decompilers, Sandboxie. Incident response and audit: Belkasoft, F-Response, Splunk, Nessus, Burp Suite, Acunetix, Netsparker. E-learning: five courses on the C-DAC platform — cyber security awareness, network security fundamentals, cyber crime investigation, cyber forensics and mobile forensics. And C-DAC's own cyber forensic tool kits.
+
+Mongolia provided the premises on the first floor of the Military Institute, their renovation, the Centre's staff and its day-to-day operation.
+
+### [Slide 9] The learning environment — 1 min
+
+After the briefing you will see all of this with your own eyes. *Point briefly to each photograph.* Three laboratories with 37 workstations in total: the digital forensics laboratory with twelve computers, the malware analysis laboratory with fourteen, the incident and audit laboratory with eleven, each with smart boards and printers. A 34-seat lecture hall; a library; a staff room for eight instructors; a data centre with two racks hosting the servers, storage, firewall and the e-learning platform; and the head of department's office.
+
+### [Slide 10] From a training centre to a university department — 1 min
+
+The Centre began in January 2023 with five posts: the head of the Centre — myself — and three teachers. In July 2025 it was expanded into the Cyber Security Department of the Military Institute, and it now runs NDU's three bachelor programmes in cyber security, network engineering and software engineering.
+
+*Point to the list on the left.* The faculty has grown to seven. Senior teacher Lieutenant Ch. Enkhbaatar completed a professional cyber security course in India. This year one teacher defended a doctorate and two defended master's degrees. *Figures at the bottom right.* In the first half of 2026 the Department delivered 162 credits of bachelor teaching and rewrote thirteen specialised course units to the national standard. This year we held the first graduation of the cyber security bachelor programme.
+
+### [Slide 11] Indian engineers and training teams — 1.5 min
+
+Indian specialists have worked here continuously since March 2022. *Down the table.* C-DAC's engineer Sandeep Kumar and resident engineers Vikash Sharma and Taranjeet Singh were responsible for installation and operation for thirteen months, trained our teachers in September 2022 and ran the laboratory tools course in April 2023.
+
+Since August 2023 nine training teams of two instructors each, from the Indian Air Force, Navy and Army, have rotated every four months and, under the 2024–2026 training plan approved by both sides, each team has taught one or two specialised courses. The first team — Dr M.K. Sharma and Vinod Kumar Sharma — delivered the instructor programme, network security and malware analysis; the following teams taught the cyber security basic course, ethical hacking, SOC analyst, digital forensics, network administration, cryptography, penetration testing, audit and the foundation course. The seventh team, led by Wing Commander Kishore Yadav, ran the ten-week foundation course. The eighth and ninth teams delivered the defensive Blue Team and advanced blocks in 2026.
+
+This rotation not only keeps our curriculum aligned with Indian service practice; it has built personal links and trust between the two militaries.
+
+### [Slide 12] 03 — Results 2022–2026
+
+*Section slide.*
+
+Part three: results.
+
+### [Slide 13] More than 300 specialists — 1.5 min
+
+*Point to the chart.* The chart shows every cohort from the teacher training in September 2022 to the audit course in June 2025: thirteen cohorts, 211 trainees. The largest were the cyber security basic course with 24, network administration with 22 and penetration testing with 21. After that the seventh, eighth and ninth teams ran the foundation, defensive and advanced cycles through July 2026.
+
+In total — as NDU reported to the Ministry of Defence earlier this month — between 2022 and 2026 more than three hundred specialists of the state military and law-enforcement agencies have completed training that meets international standards together with the Indian teams. In the first half of 2026 alone the Department delivered twenty credits of specialised training with the Indian team.
+
+### [Slide 14] A jointly approved curriculum: nine phases — 1 min
+
+We did not run ad-hoc courses; the two sides agreed and implemented an integrated nine-phase curriculum. It started with instructor training in 2023 and advanced through the basic course, ethical hacking, malware and digital forensics, network administration and cryptography, penetration testing and audit, and continued with the 2025–2026 professional cycle: a ten-week foundation, a defensive Blue Team block, and an advanced block ending with CERT operations and military cyber security operations. Each phase corresponds to one training team. All course programmes were written in English and Mongolian, so the Department can now repeat these courses even without the Indian team.
+
+### [Slide 15] Who we train — 1 min
+
+The Centre serves the whole sector, not only the Armed Forces. The Cyber Security Military Command sent the first cohort in April 2023 and remains our principal partner. Armed Forces units and the General Staff receive awareness training. NDU's own faculty and cadets were trained first, which made it possible to repeat the courses. The General Intelligence Agency, the State Special Protection Agency and the Capital Emergency Department send specialists under training contracts. In 2025 the Department was selected to execute the National Security Council's cyber capacity programme.
+
+*Figures on the right.* We signed eight training contracts with agencies and individuals, certified 22 high-school pupils in the 2025 career-outreach programme, run three bachelor programmes and graduated our first cohort this year.
+
+### [Slide 16] Research, textbooks and innovation — 1 min
+
+The Indian curriculum has become the seed of our own research and teaching material. *Point to the books on the left.* In 2025 the faculty compiled eight English-language textbooks with ISBNs, from network security to information systems audit, and placed twenty copies of each in the NDU library. The faculty developed the BEKHI learning system themselves; it was named the best innovation at the 2025 NDU Academic Conference and took second place in the Defence Minister's science and technology award. They also published eight research articles. In February 2026 the Department hosted the sector research conference with five universities and academies, together with the DefendX-2026 skills competition, and our cadet won first place at the National Computer Network Olympiad.
+
+### [Slide 17] Faculty development and partner network — 1 min
+
+India's investment is multiplied by the growth of our own people. Lieutenant Enkhbaatar studied in India; this year the faculty defended one doctorate and two master's degrees and attended courses in Germany, Japan and the United States; I myself took part in the Pacific Endeavor exercise and the ITACTIC incident-response command-post exercise.
+
+The Centre is also the anchor of a wider partner network: joint training with the Cyber Security Military Command and specialists of the US Indo-Pacific Command; the National Security Council's capacity programme; the national CERT and three universities; and companies that host our cadets for internships.
+
+### [Slide 18] Continued Indian support: the 2025 upgrade — 1 min
+
+India's support did not end with the inauguration. Under a supply order of 10 June 2025 from India's Defence Cyber Agency, C-DAC installed new memory, graphics cards and one-terabyte disks in all 37 workstations and commissioned them on 6 November 2025. Between September and November fifteen professional software licences were renewed or newly issued: the forensic suites FTK, Cellebrite, Oxygen and Belkasoft; IDA Pro, Nessus, Burp Suite, Acunetix and Invicti; the VMware and Red Hat platforms; and the firewall subscription. The Department organised customs clearance together with the Ministry of Defence and installed the items with the C-DAC engineer.
+
+### [Slide 19] Milestones 2022–2026 — 1 min
+
+Placed on one timeline, the cooperation shows a steady rhythm: a step by India, a step by us, and a consultative meeting every year to review it. In 2024 the Indian Ambassador visited the Centre and saw the need for an upgrade, which led to the 2025 renewal. The state visit in October 2025 and the newly appointed Defence Attaché — who visited our Department last November — have given the cooperation a permanent channel in Ulaanbaatar. The project implementation period formally ended in July 2026, but under the intergovernmental Memorandum the deployment of instructors has been extended to 2029. That brings us to our proposals.
+
+### [Slide 20] 04 — The road ahead
+
+*Section slide.*
+
+Part four: our proposals.
+
+### [Slide 21] Four directions proposed by NDU — 1.5 min
+
+On 9 October 2026 NDU submitted four directions for the next phase to the Ministry of Defence, and we are grateful that the Ministry put them on the agenda of this consultative meeting.
+
+One — joint education: joint bachelor's, master's and doctoral programmes in cyber security; exchange of faculty, cadets and researchers; double-degree programmes with Indian universities.
+
+Two — laboratories and research: a Cyber Range and a Security Operations Centre laboratory; a joint research centre on IoT, artificial intelligence, big data and quantum cryptography; a cyber security laboratory for unmanned and remotely operated systems.
+
+Three — faculty capacity: training our faculty and researchers at Indian defence universities and research institutions; a joint programme for training cyber security instructors.
+
+Four — international cooperation: joint participation in the ITU Cyberdrill, FIRST and APCERT exercises; a biennial Mongolia–India Cyber Security Forum; regular joint conferences, seminars, courses and exercises.
+
+*Sentence at the bottom.* Instructor deployment has already been extended to 2029 under the Memorandum; these directions build the next layer on that foundation.
+
+### [Slide 22] Proposals for the 14th consultative meeting — 1.5 min
+
+To turn these directions into decisions, we put four concrete proposals to the 14th consultative meeting. We respectfully request the Indian side to consider the following.
+
+One: include the expansion of the Cyber Security Training Centre project — Phase II — in the agenda and minutes of the meeting.
+
+Two: agree a Phase II laboratory project with a Cyber Range and a SOC laboratory, with a technical assessment by C-DAC and the Defence Cyber Agency in 2027.
+
+Three: from 2027, open seats for our faculty at Indian defence universities and research institutions, and start the design of joint and double-degree programmes.
+
+Four: hold the first Mongolia–India Cyber Security Forum in 2027 and take part together in the international exercises.
+
+These proposals are modest in cost and build directly on what already exists in this building.
+
+### [Slide 23] Thank you — 0.5 min
+
+Thank you for your attention. This Department is the most tangible result of India–Mongolia defence cooperation: built with India, run by Mongolia, serving the whole security sector. On behalf of the Department I express our deep gratitude to the Republic of India for its valuable contribution to training Mongolia's cyber security specialists, and to all the officers and leaders of the training teams who have shared their knowledge and skills.
+
+I am ready to answer your questions, and then I invite you to walk through the laboratories with us.

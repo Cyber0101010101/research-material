@@ -12,6 +12,7 @@ const Fa = require("react-icons/fa");
 const { applyTheme } = require(process.env.SKILL_DIR + "/scripts/apply_theme.js");
 const DATA = require("./data.js");
 const SPEECH = require("./speech_mn.js");
+const SPEECH_EN = require("./speech_en.js");
 let slideNo = 0;
 
 const OUT = process.argv[2] || "india_mongolia_cyber_cooperation.pptx";
@@ -100,7 +101,8 @@ function statTile(slide, x, y, w, h, value, label, color, opts = {}) {
 function notes(slide, mn, en) {
   slideNo += 1;
   const script = SPEECH[String(slideNo)] || ("МН: " + mn);
-  slide.addNotes(script + "\n\n— EN —\n" + en);
+  const scriptEn = SPEECH_EN[String(slideNo)] || en;
+  slide.addNotes(script + "\n\n— EN —\n" + scriptEn);
 }
 function dateChip(slide, x, y, w, label, color) {
   slide.addShape(pres.ShapeType.roundRect, { x, y, w, h: 0.34, rectRadius: 0.17, fill: { color }, line: { color, width: 0 }, objectName: "date chip" });
@@ -207,12 +209,12 @@ pres.defineSlideMaster({
     text(s, d.name, { x: 1.7, y: y - 0.02, w: 4.9, h: 0.35, fontSize: 15, bold: true });
     text(s, d.role, { x: 1.7, y: y + 0.32, w: 4.9, h: 0.35, fontSize: 12, color: C.text2 });
   });
-  text(s, "Briefing outline · about 23 minutes", { x: 7.3, y: 1.5, w: 5.4, h: 0.4, fontSize: 18, bold: true, fontFace: THEME.headFontFace });
+  text(s, "Briefing outline · about 21 minutes", { x: 7.3, y: 1.5, w: 5.4, h: 0.4, fontSize: 18, bold: true, fontFace: THEME.headFontFace });
   const agenda = [
-    ["01", "Partnership context", "70 years of relations; four pillars of defence cooperation", "3 min"],
+    ["01", "Partnership context", "70 years of relations; why cyber is a shared priority", "2.5 min"],
     ["02", "Establishing the Centre", "2015 MoU, 2022 inauguration, India's contribution, people", "6 min"],
-    ["03", "Results 2022–2026", "Training output, curriculum, research, 2025 upgrade", "9 min"],
-    ["04", "The road ahead", "Proposals for the next phase and for the 14th JWG", "5 min"],
+    ["03", "Results 2022–2026", "Training output, curriculum, research, 2025 upgrade", "8 min"],
+    ["04", "The road ahead", "Proposals for the next phase and for the 14th JWG", "3.5 min"],
   ];
   agenda.forEach((a, i) => {
     const y = 2.05 + i * 1.2;
@@ -252,30 +254,10 @@ pres.defineSlideMaster({
   });
   card(s, 0.7, 5.85, 12.0, 0.95);
   iconCircle(s, "FaHandshake", 0.95, 6.0, 0.65, C.accent3);
-  text(s, "The Cyber Security Training Centre was agreed in 2015, built in 2021–2022 and has run with Indian training teams since 2023. It is the most tangible institution of the defence partnership.",
+  text(s, "Under the 2015 Memorandum, the Cyber Security Training Centre was built in 2021–2022 and has run with Indian training teams since 2023. It is the most tangible institution of the defence partnership.",
     { x: 1.8, y: 5.95, w: 10.7, h: 0.75, fontSize: 13, valign: "middle" });
   notes(s, "Түүхэн замнал: 1955 → 1994 гэрээ → 2001 БХ-ын хэлэлцээр → 2015 стратегийн түншлэл + Кибер төвийн санамж бичиг (05.17) → 2022 нээлт → 2025 Төрийн айлчлал.",
     "India was the first country outside the Soviet bloc to recognise Mongolia, in December 1955. The 1994 Treaty and the 2001 Agreement on Defence Cooperation gave the relationship its legal frame, and the Joint Working Group grew out of that agreement. The Strategic Partnership of 2015 opened the current chapter, and on 17 May 2015 the two governments signed the Memorandum to establish a Cyber Security Training Centre at our Ministry of Defence. That Centre was inaugurated on 6 September 2022 during the first-ever visit of an Indian Defence Minister. Last October, President Khurelsukh's state visit marked seventy years of relations and India decided to open a Defence Wing in Ulaanbaatar.");
-
-  s = pres.addSlide({ masterName: "CONTENT", sectionTitle: sec });
-  s.addText("Defence cooperation today rests on four pillars", { placeholder: "title" });
-  const pillars = [
-    ["FaComments", "Policy dialogue", "14th", "Joint Working Group meeting, 2026", ["Annual JWG of the two Defence Ministries", "11th · New Delhi, Feb 2023", "12th · Ulaanbaatar, May 2024", "13th · New Delhi, Feb 2025"], C.accent2],
-    ["FaMedal", "Exercises", "18", "editions of Nomadic Elephant since 2004", ["Nomadic Elephant 2026 · Pithoragarh, Sept 2026 – cyber security in the curriculum", "Nomadic Elephant 2025 · Ulaanbaatar", "Khaan Quest – Indian contingent every year"], C.accent3],
-    ["FaGraduationCap", "Training", "200", "ITEC slots a year for Mongolia", ["3,500+ Mongolian professionals trained under ITEC", "Mongolian officers at Indian military institutions", "Border security forces capacity-building programme (2025)"], C.accent1],
-    ["FaUniversity", "Institutions", "2022", "Cyber Security Training Centre, NDU", ["Agreed in the 2015 MoU; built with Government of India assistance", "Defence Wing at the Embassy of India, Ulaanbaatar (announced Oct 2025)", "India–Mongolia Friendship School"], C.accent2],
-  ];
-  pillars.forEach((p, i) => {
-    const x = 0.6 + i * 3.1, y = 1.5, w = 2.9, h = 5.3;
-    card(s, x, y, w, h);
-    iconCircle(s, p[0], x + 0.25, y + 0.25, 0.7, p[5]);
-    text(s, p[1], { x: x + 1.1, y: y + 0.3, w: w - 1.3, h: 0.6, fontSize: 17, bold: true, valign: "middle" });
-    text(s, p[2], { x: x + 0.25, y: y + 1.15, w: w - 0.5, h: 0.8, fontSize: 36, bold: true, color: p[5], fontFace: THEME.headFontFace, valign: "middle" });
-    text(s, p[3], { x: x + 0.25, y: y + 1.95, w: w - 0.5, h: 0.6, fontSize: 11.5, color: C.text2 });
-    bullets(s, p[4], { x: x + 0.25, y: y + 2.65, w: w - 0.45, h: 2.5, fontSize: 11.5, paraSpaceAfter: 5 });
-  });
-  notes(s, "Дөрвөн тулгуур: зөвлөлдөх уулзалт, хамтарсан сургууль, сургалт (ITEC), байгууллагууд. Кибер төв нь 4 дэх тулгуурын гол хэсэг.",
-    "Our defence cooperation rests on four pillars. Policy dialogue: the Joint Working Group meets every year, alternating between New Delhi and Ulaanbaatar; this is its fourteenth meeting. Exercises: Nomadic Elephant has run since 2004 and in its last two editions included cyber security training, and India sends a contingent to Khaan Quest every year. Training: two hundred ITEC slots a year and more than three and a half thousand Mongolians trained. Institutions: this Centre, the new Defence Wing and the Friendship School. The Cyber Security Department sits at the centre of the fourth pillar and feeds the other three.");
 
   s = pres.addSlide({ masterName: "CONTENT", sectionTitle: sec });
   s.addText("Why cyber: a shared priority for both armed forces", { placeholder: "title" });
@@ -373,7 +355,7 @@ pres.defineSlideMaster({
     ["3", "bachelor programmes: cyber security, network engineering, software engineering (military)"],
     ["162", "credits of bachelor teaching in the first half of 2026 (156 in all of 2025)"],
     ["13", "specialised course units rewritten in 2026 to the national standard"],
-    ["1st", "civilian cyber security cohort graduated, state exam 27 May 2026"],
+    ["1st", "graduation of the cyber security bachelor programme, 2026"],
   ];
   dstats.forEach((d, i) => {
     const x = 7.2 + (i % 2) * 2.8, y = 4.35 + Math.floor(i / 2) * 1.25;
@@ -447,7 +429,7 @@ pres.defineSlideMaster({
   });
   DATA.reach.forEach((r, i) => {
     const x = 7.4 + (i % 2) * 2.7, y = 1.5 + Math.floor(i / 2) * 1.75;
-    statTile(s, x, y, 2.6, 1.6, r.value, r.label, C.accent3, { valueSize: i === 3 ? 20 : 30, labelSize: 10 });
+    statTile(s, x, y, 2.6, 1.6, r.value, r.label, C.accent3, { valueSize: 30, labelSize: 10 });
   });
   photo(s, "certificate_award.jpg", 7.4, 5.05, 5.3, 1.75, "", 0);
   text(s, "Certificates presented with the Indian training team", { x: 7.4, y: 6.82, w: 5.3, h: 0.25, fontSize: 10, color: C.text2 });
@@ -519,20 +501,6 @@ pres.defineSlideMaster({
   notes(s, "Он дарааллын гол үйл явдлууд: нээлт, орон тоо, JWG 11–13, эхний баг, 2024–26 төлөвлөгөө, Элчин сайдын айлчлал, тэнхим, Төрийн айлчлал, 2025 шинэчлэл ба Атташегийн айлчлал, төсөл дууссан 2026.07, багш 2029 хүртэл, JWG-14.",
     "Put on one timeline, the cooperation shows a steady rhythm: an institutional step on the Indian side, a step on ours, and a Joint Working Group each year to review it. The Ambassador's visit in 2024 led to the 2025 upgrade; the President's visit in October 2025 and the new Defence Attaché, who visited the Department last November, have given the partnership a permanent channel in Ulaanbaatar. The project phase formally ended in July 2026, but under the intergovernmental Memorandum instructor deployment has already been extended to 2029 – which brings us to the proposals.");
 
-  // 21. Lessons
-  s = pres.addSlide({ masterName: "CONTENT", sectionTitle: sec });
-  s.addText("Lessons learned and current challenges", { placeholder: "title" });
-  card(s, 0.6, 1.5, 5.9, 5.3);
-  iconCircle(s, "FaCheckCircle", 0.85, 1.75, 0.65, C.accent3);
-  text(s, "What worked", { x: 1.65, y: 1.75, w: 4.5, h: 0.65, fontSize: 17, bold: true, valign: "middle" });
-  bullets(s, DATA.worked, { x: 0.9, y: 2.6, w: 5.3, h: 4.1, fontSize: 12.5, paraSpaceAfter: 10 });
-  card(s, 6.8, 1.5, 5.9, 5.3);
-  iconCircle(s, "FaExclamationTriangle", 7.05, 1.75, 0.65, C.accent1);
-  text(s, "Challenges for the next phase", { x: 7.85, y: 1.75, w: 4.6, h: 0.65, fontSize: 17, bold: true, valign: "middle" });
-  bullets(s, DATA.challenges, { x: 7.1, y: 2.6, w: 5.3, h: 4.1, fontSize: 12.5, paraSpaceAfter: 10 });
-  notes(s, "Сургамж: хамтын загвар, суурин инженер, 3 жилийн төлөвлөгөө, хоёр хэлний хөтөлбөр, салбар даяар сонголт, 2025 шинэчлэл. Сорилт: багшийн хүрэлцээ (2023), гэрчилгээ, кибер полигон/онлайн платформ, төсөв, залгамж халаа, II шатны хүрээ.",
-    "Let me be candid, because the lessons shape our proposals. What worked: the shared delivery model, resident engineers in the first year, a three-year plan with four-month rotations, bilingual course programmes, sector-wide recruitment, and India's 2025 renewal. The challenges: our 2023 review found the faculty fully loaded while classrooms were half used – more instructors were needed, which the 2025 restructuring partly addressed; our certificates still lack national professional recognition; we have no cyber range or online platform for units outside the capital, which we have asked for since 2024; budget limits postponed a conference and a laboratory; each rotation needs a handover; and with the project phase closed in July 2026 we need a Phase II framework.");
-
   // =====================================================================
   // 22–25. SECTION 04
   // =====================================================================
@@ -552,42 +520,16 @@ pres.defineSlideMaster({
   notes(s, "ҮБХИС-ийн 2026.10.09-ний 01/1171 албан бичгийн 4 чиглэл: хамтарсан сургалт (бакалавр/магистр/доктор, солилцоо, хос диплом); лаборатори (Cyber Range, SOC, IoT/AI/их өгөгдөл/квант, НННХ); багшийн чадавх; олон улсын хамтын ажиллагаа (ITU Cyberdrill, FIRST, APCERT, 2 жил тутмын форум).",
     "On 9 October NDU sent the Ministry of Defence four directions for the next phase, and we are grateful that the Ministry proposed them for this Joint Working Group. First, joint education: joint bachelor, master's and doctoral programmes, exchanges, and double degrees. Second, laboratories and research: a cyber range and SOC laboratory, a joint research centre on IoT, AI, big data and quantum cryptography, and a laboratory for the cyber security of unmanned and remotely operated systems. Third, faculty capacity: training our faculty at Indian defence universities and a joint programme for cyber security instructors. Fourth, international cooperation: joint participation in ITU Cyberdrill, FIRST and APCERT exercises, a biennial Mongolia–India Cyber Security Forum, and regular joint events.");
 
-  // 24. Roadmap
-  s = pres.addSlide({ masterName: "CONTENT", sectionTitle: sec });
-  s.addText("Proposed roadmap 2026–2030", { placeholder: "title" });
-  const years = ["2026", "2027", "2028", "2029", "2030"];
-  const gx = 4.3, gw = 8.4, gy = 1.5, rowH = 0.58, yw = gw / years.length;
-  years.forEach((yr, i) => {
-    text(s, yr, { x: gx + i * yw, y: gy, w: yw, h: 0.4, fontSize: 13, bold: true, color: C.text2, align: "center", valign: "middle" });
-    s.addShape(pres.ShapeType.line, { x: gx + i * yw, y: gy + 0.45, w: 0, h: rowH * DATA.roadmap.length + 0.1, line: { color: "DDE3EC", width: 0.75 }, objectName: "grid " + yr });
-  });
-  DATA.roadmap.forEach((r, i) => {
-    const y = gy + 0.55 + i * rowH;
-    text(s, r.label, { x: 0.6, y, w: 3.6, h: rowH - 0.1, fontSize: 11.5, bold: true, valign: "middle" });
-    r.bars.forEach(b => {
-      const bx = gx + (b.start - 2026) * yw, bw = (Math.min(b.end, 2031) - b.start) * yw;
-      const color = kindColor(b.kind);
-      s.addShape(pres.ShapeType.roundRect, { x: bx + 0.05, y: y + 0.08, w: bw - 0.1, h: rowH - 0.26, rectRadius: 0.14, fill: { color }, line: { color, width: 0 }, objectName: "bar " + r.label });
-      text(s, b.text, { x: bx + 0.15, y: y + 0.08, w: bw - 0.3, h: rowH - 0.26, fontSize: 10, color: C.background1, valign: "middle" });
-    });
-  });
-  const gEnd = gy + 0.55 + DATA.roadmap.length * rowH;
-  legend(s, 4.3, gEnd + 0.1);
-  text(s, "Milestones: 14th JWG (2026) agrees the package · C-DAC / Defence Cyber Agency technical assessment (2027) · first Forum (2027) · Cyber Range and SOC laboratory operational (2028) · review of the Memorandum's instructor term (2029)",
-    { x: 0.6, y: gEnd + 0.45, w: 12.1, h: 0.45, fontSize: 10.5, italic: true, color: C.text2 });
-  notes(s, "Замын зураг 2026–2030: багш нар 2029 хүртэл; Cyber Range/SOC 2027 үнэлгээ → 2028 ашиглалт; хамтарсан хөтөлбөр 2027 боловсруулах → 2028 элсэлт; багш нарын сургалт жил бүр; судалгааны төв 2028–; форум 2027, 2029; ITU/FIRST/APCERT жил бүр.",
-    "Put on a timeline, the package looks like this. Instructor rotations continue to 2029 as already agreed. A technical assessment in 2027 leads to a cyber range and SOC laboratory operational in 2028. Joint and double-degree programmes are designed and accredited in 2027 so that the first intakes start in 2028. Two faculty members a year train in India from 2027. The joint research centre follows in 2028. The first Mongolia–India Cyber Security Forum is held in 2027 and the second in 2029, and from 2027 we take part together in the ITU, FIRST and APCERT exercises. In 2029 the Memorandum's instructor term comes up for review.");
-
   // 25. Proposals for JWG-14
   s = pres.addSlide({ masterName: "CONTENT", sectionTitle: sec });
   s.addText("Proposals for the 14th Joint Working Group", { placeholder: "title" });
   text(s, "We respectfully request the Indian side to consider:", { x: 0.6, y: 1.45, w: 12, h: 0.4, fontSize: 14, italic: true, color: C.text2 });
   DATA.asks.forEach((a, i) => {
-    const y = 1.95 + i * 0.98;
-    card(s, 0.6, y, 12.1, 0.86);
-    s.addShape(pres.ShapeType.ellipse, { x: 0.8, y: y + 0.18, w: 0.5, h: 0.5, fill: { color: C.accent1 }, line: { color: C.accent1, width: 0 }, objectName: "number" });
-    text(s, String(i + 1), { x: 0.8, y: y + 0.18, w: 0.5, h: 0.5, fontSize: 15, bold: true, color: C.background1, align: "center", valign: "middle" });
-    text(s, [{ text: a[0] + " ", options: { bold: true } }, { text: a[1] }], { x: 1.5, y: y + 0.08, w: 11.0, h: 0.7, fontSize: 12.5, valign: "middle" });
+    const y = 2.0 + i * 1.18;
+    card(s, 0.6, y, 12.1, 1.0);
+    s.addShape(pres.ShapeType.ellipse, { x: 0.8, y: y + 0.25, w: 0.5, h: 0.5, fill: { color: C.accent1 }, line: { color: C.accent1, width: 0 }, objectName: "number" });
+    text(s, String(i + 1), { x: 0.8, y: y + 0.25, w: 0.5, h: 0.5, fontSize: 15, bold: true, color: C.background1, align: "center", valign: "middle" });
+    text(s, [{ text: a[0] + " ", options: { bold: true } }, { text: a[1] }], { x: 1.5, y: y + 0.1, w: 11.0, h: 0.8, fontSize: 13, valign: "middle" });
   });
   notes(s, "14 дэх зөвлөлдөх уулзалтад оруулах 5 санал: II шатыг протоколд тусгах; багш 2029 хүртэл + 2027–2029 төлөвлөгөө; Cyber Range/SOC лаборатори (2027 үнэлгээ); багшийн суудал, хамтарсан хөтөлбөр; 2027 форум, ITU/FIRST/APCERT.",
     "To turn the roadmap into decisions, we put five proposals to the fourteenth Joint Working Group. One: record the expansion of the Centre project, Phase II, in the agenda and minutes. Two: confirm instructor deployment to 2029 and approve a 2027–2029 joint training plan with a train-the-trainer track. Three: agree a Phase II laboratory project – cyber range and SOC – with a technical assessment in 2027. Four: open seats for our faculty at Indian defence universities from 2027 and start designing joint and double-degree programmes. Five: hold the first Mongolia–India Cyber Security Forum in 2027 and take part together in the international exercises. Each builds directly on what already exists in this building.");

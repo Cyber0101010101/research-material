@@ -18,7 +18,7 @@ module.exports = {
     ["17 May 2015", "Intergovernmental Memorandum", "Governments of Mongolia and India agree to establish a Cyber Security Training Centre at the Ministry of Defence of Mongolia"],
     ["2021", "Site prepared, equipment shipped", "First floor of the Military Institute building at NDU renovated; two containers dispatched from India (Jul–Nov 2021)"],
     ["Feb 2022", "Delivery to NDU", "93 types of equipment, software and furniture received in Ulaanbaatar"],
-    ["Mar–Jul 2022", "Installation and commissioning", "C-DAC engineer Sandeep Kumar with the NDU team; LMS and course content installed 20 Jul 2022"],
+    ["Mar–Jul 2022", "Installation and commissioning", "C-DAC engineer Sandeep Kumar with the NDU team"],
     ["6 Sep 2022", "Inauguration", "Defence Minister G. Saikhanbayar and Raksha Mantri Shri Rajnath Singh open the Centre"],
     ["Jan 2023", "Centre staffed", "Head and three teachers appointed (five posts) under the NDU Training Department"],
     ["Aug 2023", "First Indian training team", "Mobile training teams of two instructors rotate every four months"],
@@ -128,7 +128,7 @@ module.exports = {
     { value: "8", label: "training contracts with agencies and individuals for paid specialised courses (2025–2026)" },
     { value: "22", label: "high-school pupils certified in the 2025 career-outreach programme" },
     { value: "3", label: "bachelor programmes run by the Department: cyber security, network engineering, software engineering (military)" },
-    { value: "27 May 2026", label: "state examination of the first civilian cyber security bachelor cohort" },
+    { value: "2026", label: "first graduation of the cyber security bachelor programme" },
   ],
 
   // research (slide 17)
@@ -223,7 +223,6 @@ module.exports = {
 
   asks: [
     ["Include the expansion of the Cyber Security Training Centre project (Phase II) in the agenda and minutes of the 14th Joint Working Group", ""],
-    ["Confirm instructor deployment to 2029 and approve a 2027–2029 joint training plan", "on the model of the 2024–2026 plan, with a train-the-trainer track for Mongolian faculty."],
     ["Agree a Phase II laboratory project – Cyber Range and SOC laboratory", "with a C-DAC / Defence Cyber Agency technical assessment in 2027."],
     ["Open seats for Mongolian faculty at Indian defence universities and research institutions from 2027", "and start the design of joint and double-degree programmes."],
     ["Hold the first Mongolia–India Cyber Security Forum in 2027", "and take part together in ITU Cyberdrill, FIRST and APCERT exercises."],
