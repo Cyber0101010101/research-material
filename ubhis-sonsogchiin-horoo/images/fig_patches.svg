@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="780" height="310" viewBox="0 0 780 310">
+<defs>
+  <linearGradient id="gold" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#F7E08A"/><stop offset=".45" stop-color="#D9A821"/><stop offset="1" stop-color="#9C7412"/>
+  </linearGradient>
+  <linearGradient id="silver" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#FFFFFF"/><stop offset=".5" stop-color="#C9CED6"/><stop offset="1" stop-color="#7D8590"/>
+  </linearGradient>
+  <linearGradient id="bronze" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#E9B48A"/><stop offset=".5" stop-color="#B87333"/><stop offset="1" stop-color="#7A4A1E"/>
+  </linearGradient>
+  <linearGradient id="cloth" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#26395A"/><stop offset="1" stop-color="#15223A"/>
+  </linearGradient>
+  <filter id="sh" x="-20%" y="-20%" width="140%" height="140%">
+    <feDropShadow dx="1.5" dy="2" stdDeviation="1.6" flood-color="#000" flood-opacity=".28"/>
+  </filter>
+</defs><rect width="100%" height="100%" fill="#FFFFFF"/><text x="380" y="24" font-family="Liberation Sans, DejaVu Sans, Arial, sans-serif" font-size="15" font-weight="700" fill="#1B2A41" text-anchor="middle">Хорооны ханцуйн тэмдэг ба нэрэмжит ротын тэмдэг</text><g filter="url(#sh)"><path d="M25,50 H195 V170 Q195,225 110,255 Q25,225 25,170 Z" fill="url(#cloth)"/></g><path d="M25,50 H195 V170 Q195,225 110,255 Q25,225 25,170 Z" fill="none" stroke="url(#gold)" stroke-width="6"/><rect x="28" y="53" width="164" height="34" fill="#C8102E"/><text x="110" y="76" font-family="Liberation Sans, DejaVu Sans, Arial, sans-serif" font-size="19" font-weight="700" fill="#FFF" text-anchor="middle" letter-spacing="2">ҮБХИС</text><g transform="rotate(-32 110 150)">
+      <rect x="107" y="100" width="6" height="78" fill="url(#silver)" stroke="#555" stroke-width=".6"/>
+      <polygon points="107,100 110,92 113,100" fill="url(#silver)"/>
+      <rect x="96" y="176" width="28" height="5" rx="2" fill="url(#gold)"/>
+      <rect x="107" y="181" width="6" height="14" fill="url(#gold)"/></g><g transform="rotate(32 110 150)">
+      <rect x="107" y="100" width="6" height="78" fill="url(#silver)" stroke="#555" stroke-width=".6"/>
+      <polygon points="107,100 110,92 113,100" fill="url(#silver)"/>
+      <rect x="96" y="176" width="28" height="5" rx="2" fill="url(#gold)"/>
+      <rect x="107" y="181" width="6" height="14" fill="url(#gold)"/></g><path d="M110,168 Q88,158 66,164 L66,196 Q88,190 110,200 Z" fill="#F5F1E6" stroke="url(#gold)" stroke-width="2"/>
+        <path d="M110,168 Q132,158 154,164 L154,196 Q132,190 110,200 Z" fill="#F5F1E6" stroke="url(#gold)" stroke-width="2"/><text x="110" y="222" font-family="Liberation Sans, DejaVu Sans, Arial, sans-serif" font-size="11" font-weight="700" fill="#E2C060" text-anchor="middle">СОНСОГЧИЙН</text><text x="110" y="236" font-family="Liberation Sans, DejaVu Sans, Arial, sans-serif" font-size="11" font-weight="700" fill="#E2C060" text-anchor="middle">ХОРОО · 1921</text><text x="110" y="280" font-family="Liberation Sans, DejaVu Sans, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#1B2A41" text-anchor="middle">Сонсогчийн хорооны</text><text x="110" y="296" font-family="Liberation Sans, DejaVu Sans, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#1B2A41" text-anchor="middle">тэмдэг (бүх сонсогч)</text><defs>
+      <path id="tp0" d="M260,150 A60,60 0 0 1 380,150"/>
+      <path id="tq1" d="M254,150 A66,66 0 0 0 386,150"/>
+    </defs>
+    <g filter="url(#sh)"><circle cx="320" cy="150" r="78" fill="#C8102E"/></g>
+    <circle cx="320" cy="150" r="75" fill="none" stroke="url(#gold)" stroke-width="3"/>
+    <circle cx="320" cy="150" r="48" fill="url(#cloth)" stroke="url(#gold)" stroke-width="3"/>
+    <text font-family="Liberation Sans, DejaVu Sans, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#FFF" letter-spacing="1"><textPath href="#tp0" startOffset="50%" text-anchor="middle">СОНСОГЧИЙН ХОРОО</textPath></text>
+    <text font-family="Liberation Sans, DejaVu Sans, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#FFF" letter-spacing=".5"><textPath href="#tq1" startOffset="50%" text-anchor="middle">БААТАР Ц.ОЛЗВОЙ</textPath></text>
+    <text x="320" y="156" font-family="Liberation Sans, DejaVu Sans, Arial, sans-serif" font-size="34" font-weight="700" fill="#E9C34F" text-anchor="middle">1</text>
+    <text x="320" y="176" font-family="Liberation Sans, DejaVu Sans, Arial, sans-serif" font-size="12" font-weight="700" fill="#E9C34F" text-anchor="middle" letter-spacing="2">РОТ</text><text x="320" y="260" font-family="Liberation Sans, DejaVu Sans, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#1B2A41" text-anchor="middle">1-р рот · 1-р батальон</text><text x="320" y="276" font-family="Liberation Sans, DejaVu Sans, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#1B2A41" text-anchor="middle">(улаан хүрээ)</text><defs>
+      <path id="tp2" d="M440,150 A60,60 0 0 1 560,150"/>
+      <path id="tq3" d="M434,150 A66,66 0 0 0 566,150"/>
+    </defs>
+    <g filter="url(#sh)"><circle cx="500" cy="150" r="78" fill="#0066B3"/></g>
+    <circle cx="500" cy="150" r="75" fill="none" stroke="url(#gold)" stroke-width="3"/>
+    <circle cx="500" cy="150" r="48" fill="url(#cloth)" stroke="url(#gold)" stroke-width="3"/>
+    <text font-family="Liberation Sans, DejaVu Sans, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#FFF" letter-spacing="1"><textPath href="#tp2" startOffset="50%" text-anchor="middle">СОНСОГЧИЙН ХОРОО</textPath></text>
+    <text font-family="Liberation Sans, DejaVu Sans, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#FFF" letter-spacing=".5"><textPath href="#tq3" startOffset="50%" text-anchor="middle">БААТАР Ж.ЛХАГВАСҮРЭН</textPath></text>
+    <text x="500" y="156" font-family="Liberation Sans, DejaVu Sans, Arial, sans-serif" font-size="34" font-weight="700" fill="#E9C34F" text-anchor="middle">5</text>
+    <text x="500" y="176" font-family="Liberation Sans, DejaVu Sans, Arial, sans-serif" font-size="12" font-weight="700" fill="#E9C34F" text-anchor="middle" letter-spacing="2">РОТ</text><text x="500" y="260" font-family="Liberation Sans, DejaVu Sans, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#1B2A41" text-anchor="middle">5-р рот · 2-р батальон</text><text x="500" y="276" font-family="Liberation Sans, DejaVu Sans, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#1B2A41" text-anchor="middle">(хөх хүрээ)</text><defs>
+      <path id="tp4" d="M620,150 A60,60 0 0 1 740,150"/>
+      <path id="tq5" d="M614,150 A66,66 0 0 0 746,150"/>
+    </defs>
+    <g filter="url(#sh)"><circle cx="680" cy="150" r="78" fill="#B8860B"/></g>
+    <circle cx="680" cy="150" r="75" fill="none" stroke="url(#gold)" stroke-width="3"/>
+    <circle cx="680" cy="150" r="48" fill="url(#cloth)" stroke="url(#gold)" stroke-width="3"/>
+    <text font-family="Liberation Sans, DejaVu Sans, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#FFF" letter-spacing="1"><textPath href="#tp4" startOffset="50%" text-anchor="middle">СОНСОГЧИЙН ХОРОО</textPath></text>
+    <text font-family="Liberation Sans, DejaVu Sans, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#FFF" letter-spacing=".5"><textPath href="#tq5" startOffset="50%" text-anchor="middle">БААТАР Д.ХАЯНХЯРВАА</textPath></text>
+    <text x="680" y="156" font-family="Liberation Sans, DejaVu Sans, Arial, sans-serif" font-size="34" font-weight="700" fill="#E9C34F" text-anchor="middle">9</text>
+    <text x="680" y="176" font-family="Liberation Sans, DejaVu Sans, Arial, sans-serif" font-size="12" font-weight="700" fill="#E9C34F" text-anchor="middle" letter-spacing="2">РОТ</text><text x="680" y="260" font-family="Liberation Sans, DejaVu Sans, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#1B2A41" text-anchor="middle">9-р рот · 3-р батальон</text><text x="680" y="276" font-family="Liberation Sans, DejaVu Sans, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#1B2A41" text-anchor="middle">(шар хүрээ)</text></svg>

@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1060" height="520" viewBox="0 0 1060 520">
+<defs>
+  <linearGradient id="gold" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#F7E08A"/><stop offset=".45" stop-color="#D9A821"/><stop offset="1" stop-color="#9C7412"/>
+  </linearGradient>
+  <linearGradient id="silver" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#FFFFFF"/><stop offset=".5" stop-color="#C9CED6"/><stop offset="1" stop-color="#7D8590"/>
+  </linearGradient>
+  <linearGradient id="bronze" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#E9B48A"/><stop offset=".5" stop-color="#B87333"/><stop offset="1" stop-color="#7A4A1E"/>
+  </linearGradient>
+  <linearGradient id="cloth" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#26395A"/><stop offset="1" stop-color="#15223A"/>
+  </linearGradient>
+  <filter id="sh" x="-20%" y="-20%" width="140%" height="140%">
+    <feDropShadow dx="1.5" dy="2" stdDeviation="1.6" flood-color="#000" flood-opacity=".28"/>
+  </filter>
+</defs><rect width="100%" height="100%" fill="#FFFFFF"/><text x="530" y="26" font-family="Liberation Sans, DejaVu Sans, Arial, sans-serif" font-size="15" font-weight="700" fill="#1B2A41" text-anchor="middle">Өдөр тутмын/ёслолын хүрэм (урдаас харсан байдал)</text><path d="M375,70 L430,60 L470,120 L510,60 L565,70 L620,100 L675,330 L630,345 L590,190 L590,470 L350,470 L350,190 L310,345 L265,330 L320,100 Z"
+        fill="#3D5A3C" stroke="#1F3020" stroke-width="2"/><path d="M430,60 L470,120 L510,60" fill="none" stroke="#1F3020" stroke-width="2"/><line x1="470" y1="120" x2="470" y2="470" stroke="#1F3020" stroke-width="2"/><circle cx="470" cy="165" r="5" fill="url(#gold)"/><circle cx="470" cy="240" r="5" fill="url(#gold)"/><circle cx="470" cy="315" r="5" fill="url(#gold)"/><circle cx="470" cy="390" r="5" fill="url(#gold)"/><rect x="370" y="175" width="70" height="55" rx="4" fill="none" stroke="#1F3020" stroke-width="1.5"/><rect x="500" y="175" width="70" height="55" rx="4" fill="none" stroke="#1F3020" stroke-width="1.5"/><polygon points="330,92 412,72 416,94 334,114" fill="#1B2A41" stroke="url(#gold)" stroke-width="2"/><polygon points="528,72 610,92 614,114 532,94" fill="#1B2A41" stroke="url(#gold)" stroke-width="2"/><polygon points="354,86 362,92 354,98 346,92" fill="url(#gold)"/><polygon points="374,81 382,87 374,93 366,87" fill="url(#gold)"/><ellipse cx="388" cy="158" rx="9" ry="11" fill="url(#gold)"/><ellipse cx="412" cy="158" rx="9" ry="11" fill="url(#silver)"/><rect x="375" y="135" width="50" height="8" fill="#1B2A41"/><rect x="510" y="140" width="56" height="14" fill="#B22" stroke="#611" stroke-width="1"/><rect x="512" y="236" width="56" height="12" fill="#222"/><path d="M626,128 L656,120 L662,158 L636,168 Z" fill="#1B2A41" stroke="url(#gold)" stroke-width="2"/><rect x="640" y="186" width="34" height="26" fill="#C8102E" transform="rotate(-14 657 199)"/><g transform="translate(645 262) rotate(-14)"><rect x="-14" y="-14" width="28" height="30" fill="#1B2A41"/><polygon points="-10,-3 0,-10 10,-3 10,0.5 0,-6.5 -10,0.5" fill="url(#gold)" stroke="#5E6670" stroke-width=".8"/><polygon points="-10,5 0,-2 10,5 10,8.5 0,1.5 -10,8.5" fill="url(#gold)" stroke="#5E6670" stroke-width=".8"/><polygon points="-10,13 0,6 10,13 10,16.5 0,9.5 -10,16.5" fill="url(#gold)" stroke="#5E6670" stroke-width=".8"/></g><circle cx="310" cy="160" r="15" fill="#C8102E" stroke="url(#gold)" stroke-width="2"/>
+    <line x1="570" y1="82" x2="740" y2="70" stroke="#C8102E" stroke-width="1.4"/>
+    <circle cx="740" cy="70" r="11" fill="#C8102E"/><text x="740" y="74.5" font-family="Liberation Sans, DejaVu Sans, Arial, sans-serif" font-size="12" font-weight="700" fill="#FFF" text-anchor="middle">1</text>
+    <text x="756" y="74.5" font-family="Liberation Sans, DejaVu Sans, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#1B2A41" text-anchor="start">Албан тушаалын бүрээс (хоёр мөрөнд)</text>
+    <line x1="400" y1="158" x2="235" y2="110" stroke="#C8102E" stroke-width="1.4"/>
+    <circle cx="235" cy="110" r="11" fill="#C8102E"/><text x="235" y="114.5" font-family="Liberation Sans, DejaVu Sans, Arial, sans-serif" font-size="12" font-weight="700" fill="#FFF" text-anchor="middle">2</text>
+    <text x="219" y="114.5" font-family="Liberation Sans, DejaVu Sans, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#1B2A41" text-anchor="end">Шагналын тэмдэг (баруун энгэр)</text>
+    <line x1="538" y1="147" x2="740" y2="128" stroke="#C8102E" stroke-width="1.4"/>
+    <circle cx="740" cy="128" r="11" fill="#C8102E"/><text x="740" y="132.5" font-family="Liberation Sans, DejaVu Sans, Arial, sans-serif" font-size="12" font-weight="700" fill="#FFF" text-anchor="middle">3</text>
+    <text x="756" y="132.5" font-family="Liberation Sans, DejaVu Sans, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#1B2A41" text-anchor="start">Төрийн шагнал (зүүн энгэр)</text>
+    <line x1="644" y1="144" x2="740" y2="186" stroke="#C8102E" stroke-width="1.4"/>
+    <circle cx="740" cy="186" r="11" fill="#C8102E"/><text x="740" y="190.5" font-family="Liberation Sans, DejaVu Sans, Arial, sans-serif" font-size="12" font-weight="700" fill="#FFF" text-anchor="middle">4</text>
+    <text x="756" y="190.5" font-family="Liberation Sans, DejaVu Sans, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#1B2A41" text-anchor="start">Хорооны тэмдэг (зүүн ханцуй)</text>
+    <line x1="660" y1="199" x2="740" y2="244" stroke="#C8102E" stroke-width="1.4"/>
+    <circle cx="740" cy="244" r="11" fill="#C8102E"/><text x="740" y="248.5" font-family="Liberation Sans, DejaVu Sans, Arial, sans-serif" font-size="12" font-weight="700" fill="#FFF" text-anchor="middle">5</text>
+    <text x="756" y="248.5" font-family="Liberation Sans, DejaVu Sans, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#1B2A41" text-anchor="start">Жижүүрийн бугуйвч (жижүүрт)</text>
+    <line x1="650" y1="262" x2="740" y2="302" stroke="#C8102E" stroke-width="1.4"/>
+    <circle cx="740" cy="302" r="11" fill="#C8102E"/><text x="740" y="306.5" font-family="Liberation Sans, DejaVu Sans, Arial, sans-serif" font-size="12" font-weight="700" fill="#FFF" text-anchor="middle">6</text>
+    <text x="756" y="306.5" font-family="Liberation Sans, DejaVu Sans, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#1B2A41" text-anchor="start">Курсийн тэмдэг (зүүн ханцуй)</text>
+    <line x1="310" y1="160" x2="235" y2="200" stroke="#C8102E" stroke-width="1.4"/>
+    <circle cx="235" cy="200" r="11" fill="#C8102E"/><text x="235" y="204.5" font-family="Liberation Sans, DejaVu Sans, Arial, sans-serif" font-size="12" font-weight="700" fill="#FFF" text-anchor="middle">7</text>
+    <text x="219" y="204.5" font-family="Liberation Sans, DejaVu Sans, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#1B2A41" text-anchor="end">Ротын тэмдэг (баруун ханцуй)</text>
+    <line x1="540" y1="242" x2="740" y2="360" stroke="#C8102E" stroke-width="1.4"/>
+    <circle cx="740" cy="360" r="11" fill="#C8102E"/><text x="740" y="364.5" font-family="Liberation Sans, DejaVu Sans, Arial, sans-serif" font-size="12" font-weight="700" fill="#FFF" text-anchor="middle">8</text>
+    <text x="756" y="364.5" font-family="Liberation Sans, DejaVu Sans, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#1B2A41" text-anchor="start">Нэрийн тууз (зүүн халаас)</text><text x="530" y="505" font-family="Liberation Sans, DejaVu Sans, Arial, sans-serif" font-size="12" font-weight="400" fill="#5B6472" text-anchor="middle">Тайлбар: «баруун», «зүүн» гэдэг нь хувцас өмссөн сонсогчийн талыг заана.</text></svg>

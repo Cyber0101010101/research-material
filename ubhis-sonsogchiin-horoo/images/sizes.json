@@ -1,0 +1,38 @@
+{
+  "fig_officer": {
+    "width": 660,
+    "height": 694
+  },
+  "fig_nco": {
+    "width": 660,
+    "height": 694
+  },
+  "fig_year": {
+    "width": 760,
+    "height": 220
+  },
+  "fig_patches": {
+    "width": 780,
+    "height": 310
+  },
+  "fig_armband": {
+    "width": 740,
+    "height": 270
+  },
+  "fig_awards_list": {
+    "width": 780,
+    "height": 240
+  },
+  "fig_awards_special": {
+    "width": 780,
+    "height": 360
+  },
+  "fig_awards_unit": {
+    "width": 810,
+    "height": 255
+  },
+  "fig_uniform": {
+    "width": 1060,
+    "height": 520
+  }
+}
