@@ -34,5 +34,21 @@
   "fig_uniform": {
     "width": 1060,
     "height": 520
+  },
+  "sb_badge": {
+    "width": 900,
+    "height": 520
+  },
+  "sb_mini": {
+    "width": 800,
+    "height": 375
+  },
+  "sb_certificate": {
+    "width": 1123,
+    "height": 794
+  },
+  "sb_front": {
+    "width": 300,
+    "height": 380
   }
 }
