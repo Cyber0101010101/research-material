@@ -17,6 +17,30 @@ const INK = '#1c2740';
 let uid = 0;
 const nid = (p) => `${p}${++uid}`;
 
+// ---------- Mongolian army digital brown camouflage (pixel pattern) ----------
+function digitalCamo() {
+  const T = 144, P = 6, N = T / P;               // 24 x 24 pixel tile, 6 px pixels
+  let seed = 20261027;
+  const rnd = () => ((seed = (seed * 1103515245 + 12345) & 0x7fffffff) / 0x7fffffff);
+  const grid = Array.from({ length: N }, () => Array(N).fill(0));   // 0 = sand base
+  const blob = (col, cells) => {
+    let x = Math.floor(rnd() * N), y = Math.floor(rnd() * N);
+    for (let k = 0; k < cells; k++) {
+      grid[(y + N) % N][(x + N) % N] = col;
+      if (rnd() < 0.5) grid[(y + N) % N][(x + 1 + N) % N] = col;
+      const d = Math.floor(rnd() * 4);
+      x += [1, -1, 0, 0][d]; y += [0, 0, 1, -1][d];
+    }
+  };
+  for (let i = 0; i < 9; i++) blob(1, 34);   // light khaki
+  for (let i = 0; i < 9; i++) blob(2, 30);   // mid brown
+  for (let i = 0; i < 6; i++) blob(3, 16);   // dark brown
+  const C = ['#b09772', '#cbb68c', '#87694a', '#56402c'];
+  let r = `<pattern id="camo" width="${T}" height="${T}" patternUnits="userSpaceOnUse"><rect width="${T}" height="${T}" fill="${C[0]}"/>`;
+  for (let y = 0; y < N; y++) for (let x = 0; x < N; x++) if (grid[y][x]) r += `<rect x="${x * P}" y="${y * P}" width="${P}" height="${P}" fill="${C[grid[y][x]]}"/>`;
+  return r + '</pattern>';
+}
+
 // ---------- shared defs ----------
 function defs() {
   return `
@@ -34,7 +58,7 @@ function defs() {
       <stop offset="0" stop-color="#2a3a60"/><stop offset="1" stop-color="#172240"/>
     </linearGradient>
     <linearGradient id="olive" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#666d48"/><stop offset="1" stop-color="#555b3b"/>
+      <stop offset="0" stop-color="#7d6446"/><stop offset="1" stop-color="#634d35"/>
     </linearGradient>
     <linearGradient id="jacket" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0" stop-color="#2e3e4e"/><stop offset="1" stop-color="#1f2b38"/>
@@ -45,18 +69,9 @@ function defs() {
     <filter id="shs" x="-20%" y="-20%" width="140%" height="140%">
       <feDropShadow dx="1" dy="2" stdDeviation="2" flood-color="#000" flood-opacity="0.3"/>
     </filter>
-    <pattern id="camo" width="180" height="180" patternUnits="userSpaceOnUse">
-      <rect width="180" height="180" fill="#6a6f49"/>
-      <path d="M10 20 q30 -18 55 5 t40 30 q-20 25 -55 10 t-40 -45z" fill="#4c5233"/>
-      <path d="M100 90 q35 -10 60 12 t-5 45 q-30 10 -45 -10 t-10 -47z" fill="#4c5233"/>
-      <path d="M20 110 q25 -15 45 0 t20 35 q-25 18 -50 2 t-15 -37z" fill="#82785a"/>
-      <path d="M120 10 q25 0 40 18 t-10 30 q-25 5 -35 -12 t5 -36z" fill="#82785a"/>
-      <path d="M70 60 q15 -8 25 4 t-4 18 q-14 4 -20 -6 t-1 -16z" fill="#35391f"/>
-      <path d="M150 150 q12 -6 22 4 t-4 16 q-12 3 -18 -6 t0 -14z" fill="#35391f"/>
-      <path d="M40 160 q12 -6 22 4 t-4 16 q-12 3 -18 -6 t0 -14z" fill="#35391f"/>
-    </pattern>
+    ${digitalCamo()}
     <pattern id="velcro" width="6" height="6" patternUnits="userSpaceOnUse">
-      <rect width="6" height="6" fill="#4f5536"/><circle cx="3" cy="3" r="1.2" fill="#646a47"/>
+      <rect width="6" height="6" fill="#6b5539"/><circle cx="3" cy="3" r="1.2" fill="#82694a"/>
     </pattern>
   </defs>`;
 }
@@ -137,16 +152,16 @@ function patch(spec, variant) {
   const svc = variant === 'service';
   const u = spec.unit || { co: 1 };
   const bnKey = u.cmd ? 'c' : (u.bn || CO_BN(u.co));
-  const bcol = svc ? '#c8102e' : '#2f331c';      // one colour for all units
-  const ring = svc ? 'url(#gold)' : '#c8b07a';
+  const bcol = svc ? '#c8102e' : '#3b2a1a';      // one colour for all units
+  const ring = svc ? 'url(#gold)' : '#e0cb98';
   const base = svc ? 'url(#navy)' : 'url(#camo)';
-  const edge = svc ? bcol : '#2f331c';
-  const offFill = svc ? 'url(#gold)' : '#c8b07a';
-  const offEdge = svc ? '#7a5a0c' : '#2f331c';
-  const sgtFill = svc ? 'url(#silver)' : '#17180f';
-  const sgtEdge = svc ? '#6e7686' : '#17180f';
-  const frameCol = svc ? 'url(#gold)' : '#c8b07a';
-  const textCol = svc ? '#e6c25a' : '#c8b07a';
+  const edge = svc ? bcol : '#3b2a1a';
+  const offFill = svc ? 'url(#gold)' : '#e0cb98';
+  const offEdge = svc ? '#7a5a0c' : '#3b2a1a';
+  const sgtFill = svc ? 'url(#silver)' : '#1f160d';
+  const sgtEdge = svc ? '#6e7686' : '#1f160d';
+  const frameCol = svc ? 'url(#gold)' : '#e0cb98';
+  const textCol = svc ? '#e6c25a' : '#e0cb98';
   const cx = W / 2;
   let g = '';
   g += `<path d="${pentagon(0)}" fill="${base}" stroke="${edge}" stroke-width="9" stroke-linejoin="round"/>`;
@@ -165,7 +180,7 @@ function patch(spec, variant) {
       const fw = 184, fh = fw / FALCON_AR;
       g += `<image href="${FALCON[svc ? 'svc' : 'camo']}" x="${cx - fw / 2}" y="48" width="${fw}" height="${fh}" preserveAspectRatio="xMidYMid meet"/>`;
     } else {
-      g += `<circle cx="${cx}" cy="60" r="24" fill="${svc ? '#121a33' : '#3d4228'}" stroke="${ring}" stroke-width="4"/>`;
+      g += `<circle cx="${cx}" cy="60" r="24" fill="${svc ? '#121a33' : '#5a4330'}" stroke="${ring}" stroke-width="4"/>`;
       g += `<text x="${cx}" y="${unitTxt.length > 2 ? 67 : 69}" text-anchor="middle" font-family="${FONT}" font-weight="700" font-size="${unitTxt.length > 2 ? 19 : 25}" fill="${textCol}">${unitTxt}</text>`;
     }
   }
@@ -186,13 +201,13 @@ function patch(spec, variant) {
     for (let i = 0; i < spec.n; i++) g += chevron(cx, top + i * step, cw, t, sgtFill, sgtEdge);
     let y = top + (spec.n - 1) * step + drop + t + 8;
     if (spec.srhomb) {
-      g += rhomb(cx, y + 14, 22, 28, svc ? 'url(#silver)' : '#17180f', svc ? '#7a5a0c' : '#17180f', svc);
+      g += rhomb(cx, y + 14, 22, 28, svc ? 'url(#silver)' : '#1f160d', svc ? '#7a5a0c' : '#1f160d', svc);
       y += 32;
     }
     for (let i = 0; i < (spec.arcs || 0); i++) g += arc(cx, y + i * 20, cw, 13, sgtFill, sgtEdge);
   }
   const fs = bottom.length > 11 ? 16 : 19;
-  g += `<text x="${cx}" y="${H - 26}" text-anchor="middle" font-family="${FONT}" font-weight="700" font-size="${fs}" letter-spacing="1.5" fill="${svc ? '#e9edf3' : (spec.line === 'sgt' ? '#17180f' : '#c8b07a')}">${bottom}</text>`;
+  g += `<text x="${cx}" y="${H - 26}" text-anchor="middle" font-family="${FONT}" font-weight="700" font-size="${fs}" letter-spacing="1.5" fill="${svc ? '#e9edf3' : (spec.line === 'sgt' ? '#1f160d' : '#e0cb98')}">${bottom}</text>`;
   return `<g filter="url(#sh)">${g}</g>`;
 }
 
@@ -255,7 +270,7 @@ function camoFigure() {
   const h = 150 + 2 * cellH + 30;
   let s = `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}">${defs()}<rect width="${w}" height="${h}" fill="#fff"/>`;
   s += title(w / 2, 55, 'Эрээн (өнгөлөн далдлах) хувцасны хувилбар — бүдэг өнгө, наалттай');
-  s += `<text x="${w / 2}" y="100" text-anchor="middle" font-family="${FONT}" font-size="26" fill="#55607a">Алтлаг → хүрэн шар · Мөнгөлөг → хар · Хөвөө → хар хүрэн · Хэмжээ, тоо, байршил албаны хувилбартай ижил</text>`;
+  s += `<text x="${w / 2}" y="100" text-anchor="middle" font-family="${FONT}" font-size="26" fill="#55607a">Монгол цэргийн дижитал бор хээ · Алтлаг → цайвар шар · Мөнгөлөг → хар хүрэн · Хэмжээ, тоо, байршил албаны хувилбартай ижил</text>`;
   all.forEach((it, i) => {
     const r = i < 8 ? 0 : 1, c = i < 8 ? i : i - 8;
     const inRow = 8;
@@ -272,33 +287,33 @@ function camoFigure() {
 function committeeShield(svc, sc = 1) {
   // 100 x 120 local
   const bg = svc ? 'url(#navy)' : 'url(#olive)';
-  const rim = svc ? 'url(#gold)' : '#c8b07a';
-  const band = svc ? '#c8102e' : '#3b3f26';
-  const txt = svc ? '#fff' : '#c8b07a';
+  const rim = svc ? 'url(#gold)' : '#e0cb98';
+  const band = svc ? '#c8102e' : '#4a3b2a';
+  const txt = svc ? '#fff' : '#e0cb98';
   return `<g transform="scale(${sc})" filter="url(#shs)">
     <path d="M0 0 H100 V70 Q100 105 50 120 Q0 105 0 70 Z" fill="${rim}"/>
     <path d="M5 5 H95 V69 Q95 100 50 114 Q5 100 5 69 Z" fill="${bg}"/>
     <rect x="5" y="5" width="90" height="22" fill="${band}"/>
     <text x="50" y="22" text-anchor="middle" font-family="${FONT}" font-weight="700" font-size="15" fill="${txt}">ҮБХИС</text>
-    <path d="M32 40 L66 82 M68 40 L34 82" stroke="${svc ? '#d6dbe4' : '#17180f'}" stroke-width="5"/>
-    <path d="M28 76 Q39 70 50 76 Q61 70 72 76 V90 Q61 84 50 90 Q39 84 28 90Z" fill="${svc ? '#f3ecd9' : '#c8b07a'}" stroke="${svc ? '#d4a52c' : '#17180f'}" stroke-width="1.5"/>
+    <path d="M32 40 L66 82 M68 40 L34 82" stroke="${svc ? '#d6dbe4' : '#1f160d'}" stroke-width="5"/>
+    <path d="M28 76 Q39 70 50 76 Q61 70 72 76 V90 Q61 84 50 90 Q39 84 28 90Z" fill="${svc ? '#f3ecd9' : '#e0cb98'}" stroke="${svc ? '#d4a52c' : '#1f160d'}" stroke-width="1.5"/>
   </g>`;
 }
 function courseBadge(svc, n, sc = 1) {
   // 90 x 100 local
   const bg = svc ? 'url(#navy)' : 'url(#olive)';
-  const rim = svc ? 'url(#gold)' : '#c8b07a';
-  const ch = svc ? 'url(#gold)' : '#c8b07a';
+  const rim = svc ? 'url(#gold)' : '#e0cb98';
+  const ch = svc ? 'url(#gold)' : '#e0cb98';
   let s = `<g transform="scale(${sc})" filter="url(#shs)"><path d="M0 0 H90 V78 Q45 104 0 78 Z" fill="${rim}"/><path d="M4 4 H86 V75 Q45 98 4 75 Z" fill="${bg}"/>`;
-  for (let i = 0; i < n; i++) s += chevron(45, 16 + i * 14, 56, 7, ch, svc ? '#7a5a0c' : '#2f331c');
+  for (let i = 0; i < n; i++) s += chevron(45, 16 + i * 14, 56, 7, ch, svc ? '#7a5a0c' : '#3b2a1a');
   return s + '</g>';
 }
 function companyBadge(svc, sc = 1) {
   // circle r=50, centered at 50,50
-  const ring = svc ? '#c8102e' : '#3b3f26';
-  const rim = svc ? 'url(#gold)' : '#c8b07a';
+  const ring = svc ? '#c8102e' : '#4a3b2a';
+  const rim = svc ? 'url(#gold)' : '#e0cb98';
   const c = svc ? 'url(#navy)' : 'url(#olive)';
-  const num = svc ? '#e6c25a' : '#c8b07a';
+  const num = svc ? '#e6c25a' : '#e0cb98';
   return `<g transform="scale(${sc})" filter="url(#shs)">
     <circle cx="50" cy="50" r="50" fill="${rim}"/><circle cx="50" cy="50" r="46" fill="${ring}"/>
     <circle cx="50" cy="50" r="31" fill="${rim}"/><circle cx="50" cy="50" r="28" fill="${c}"/>
@@ -307,11 +322,11 @@ function companyBadge(svc, sc = 1) {
 }
 function bestCompany(svc, sc = 1) {
   // oval 60 x 74
-  const rim = svc ? 'url(#gold)' : '#c8b07a';
+  const rim = svc ? 'url(#gold)' : '#e0cb98';
   const c = svc ? 'url(#navy)' : 'url(#olive)';
   return `<g transform="scale(${sc})" filter="url(#shs)">
     <ellipse cx="30" cy="37" rx="30" ry="37" fill="${rim}"/><ellipse cx="30" cy="37" rx="26" ry="33" fill="${c}"/>
-    <path d="M22 16 V52" stroke="${rim}" stroke-width="3"/><path d="M23 17 L44 25 L23 33Z" fill="${svc ? '#c8102e' : '#17180f'}"/>
+    <path d="M22 16 V52" stroke="${rim}" stroke-width="3"/><path d="M23 17 L44 25 L23 33Z" fill="${svc ? '#c8102e' : '#1f160d'}"/>
   </g>`;
 }
 
@@ -341,29 +356,51 @@ function flagPatch(svc, sc = 1) {
   // 70 x 46
   const o = svc ? 1 : 0.55;
   return `<g transform="scale(${sc})" filter="url(#shs)" opacity="${svc ? 1 : 0.9}">
-    <rect width="70" height="46" rx="3" fill="${svc ? '#c8102e' : '#5a3b2c'}" stroke="${svc ? '#e6c25a' : '#2f331c'}" stroke-width="2"/>
-    <rect x="23.3" y="0" width="23.4" height="46" fill="${svc ? '#0066b3' : '#3b4430'}"/>
-    <rect x="7" y="9" width="9" height="28" rx="2" fill="${svc ? '#f5c518' : '#c8b07a'}" opacity="${o + 0.2}"/>
+    <rect width="70" height="46" rx="3" fill="${svc ? '#c8102e' : '#5a3b2c'}" stroke="${svc ? '#e6c25a' : '#3b2a1a'}" stroke-width="2"/>
+    <rect x="23.3" y="0" width="23.4" height="46" fill="${svc ? '#0066b3' : '#4a3b2a'}"/>
+    <rect x="7" y="9" width="9" height="28" rx="2" fill="${svc ? '#f5c518' : '#e0cb98'}" opacity="${o + 0.2}"/>
   </g>`;
 }
 function officialEmblem(svc, sc = 1) {
   // 90 x 110 shield
-  const rim = svc ? '#c8102e' : '#2f331c';
-  const ring = svc ? '#0d5aa7' : '#3d4228';
-  const c = svc ? 'url(#gold)' : '#c8b07a';
+  const rim = svc ? '#c8102e' : '#3b2a1a';
+  const ring = svc ? '#0d5aa7' : '#5a4330';
+  const c = svc ? 'url(#gold)' : '#e0cb98';
   return `<g transform="scale(${sc})" filter="url(#shs)">
     <path d="M0 0 H90 V62 Q90 96 45 110 Q0 96 0 62 Z" fill="${rim}"/>
     <path d="M6 6 H84 V61 Q84 90 45 103 Q6 90 6 61 Z" fill="${ring}"/>
-    <circle cx="45" cy="52" r="25" fill="${c}"/><circle cx="45" cy="52" r="15" fill="none" stroke="${svc ? '#7a5a0c' : '#2f331c'}" stroke-width="3"/>
+    <circle cx="45" cy="52" r="25" fill="${c}"/><circle cx="45" cy="52" r="15" fill="none" stroke="${svc ? '#7a5a0c' : '#3b2a1a'}" stroke-width="3"/>
   </g>`;
 }
 function existingCourse(svc, n, sc = 1) {
-  // 80 x 96 red shield with gold bars
-  const bg = svc ? '#d2232a' : '#3d4228';
-  const bar = svc ? 'url(#gold)' : '#c8b07a';
-  let s = `<g transform="scale(${sc})" filter="url(#shs)"><path d="M0 0 H80 V58 Q80 86 40 96 Q0 86 0 58 Z" fill="${bg}" stroke="${svc ? '#e6c25a' : '#2f331c'}" stroke-width="3"/>`;
-  for (let i = 0; i < n; i++) s += `<rect x="14" y="${22 + i * 13}" width="52" height="7" rx="2" fill="${bar}"/>`;
+  // 80 x 96 shield: gold rim, red enamel (service) / brown digital (camouflage), bars = course
+  const field = svc ? '#d2232a' : 'url(#camo)';
+  const rim = svc ? 'url(#gold)' : '#3b2a1a';
+  const bar = svc ? 'url(#gold)' : '#e0cb98';
+  const barEdge = svc ? '#7a5a0c' : '#3b2a1a';
+  const shape = 'M0 0 H80 V58 Q80 86 40 96 Q0 86 0 58 Z';
+  const inner = 'M5 5 H75 V57 Q75 81 40 90 Q5 81 5 57 Z';
+  let s = `<g transform="scale(${sc})" filter="url(#shs)"><path d="${shape}" fill="${rim}"/><path d="${inner}" fill="${field}"/>`;
+  if (!svc) s += `<path d="${inner}" fill="#000" opacity="0.08"/>`;
+  const top = 46 - (n * 13 - 6) / 2;
+  for (let i = 0; i < n; i++) s += `<rect x="16" y="${top + i * 13}" width="48" height="7" rx="1.5" fill="${bar}" stroke="${barEdge}" stroke-width="0.8"/>`;
   return s + '</g>';
+}
+function courseFigure() {
+  const w = 1700, h = 900;
+  let s = `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}">${defs()}<rect width="${w}" height="${h}" fill="#fff"/>`;
+  s += title(w / 2, 56, 'Курсийн ханцуйн тэмдэг (зүүн ханцуй, Төрийн далбааны доор)', 36);
+  s += `<text x="${w / 2}" y="100" text-anchor="middle" font-family="${FONT}" font-size="25" fill="#55607a">Алтан хүрээтэй бамбай · хөндлөн туузын тоо = курс · 5 × 6 см</text>`;
+  const rows = [['Албаны хувцас', '(хатгамал)', true, 150], ['Эрээн хувцас', '(дижитал бор, наалттай)', false, 520]];
+  for (const [lbl, sub, svc, y] of rows) {
+    s += `<text x="60" y="${y + 90}" font-family="${FONT}" font-weight="700" font-size="30" fill="${INK}">${lbl}</text><text x="60" y="${y + 130}" font-family="${FONT}" font-size="24" fill="#55607a">${sub}</text>`;
+    for (let n = 1; n <= 4; n++) {
+      const x = 560 + (n - 1) * 310;
+      s += `<g transform="translate(${x - 80} ${y})">${existingCourse(svc, n, 2)}</g>`;
+      s += `<text x="${x}" y="${y + 240}" text-anchor="middle" font-family="${FONT}" font-weight="700" font-size="28" fill="${INK}">${n}-р курс</text>`;
+    }
+  }
+  return s + '</svg>';
 }
 
 function tag(x, y, txt, col = '#55607a') {
@@ -427,7 +464,7 @@ function placementFigure() {
   s += `<text x="${cxC}" y="${top - 55}" text-anchor="middle" font-family="${FONT}" font-weight="700" font-size="30" fill="${INK}">В. Эрээн хувцас — баруун ханцуй</text>`;
   s += sleeveShape(cx0, top, sw, shh, 'url(#camo)');
   const vpY = seamY + 26, vpH = 132 + 30 + H * psc + 30;
-  s += `<rect x="${cxC - 82}" y="${vpY}" width="164" height="${vpH}" rx="8" fill="url(#velcro)" stroke="#2f331c" stroke-width="2.5" stroke-dasharray="7 5"/>`;
+  s += `<rect x="${cxC - 82}" y="${vpY}" width="164" height="${vpH}" rx="8" fill="url(#velcro)" stroke="#3b2a1a" stroke-width="2.5" stroke-dasharray="7 5"/>`;
   s += `<g transform="translate(${cxC - 54} ${eY})">${officialEmblem(false, 1.2)}</g>`;
   s += `<g transform="translate(${cxC - W * psc / 2} ${posY}) scale(${psc})">${patch({ line: 'off', n: 2, frame: true, unit: { co: 1 } }, 'camo')}</g>`;
   s += elbow(cx0, top + 640, sw, false);
@@ -449,7 +486,7 @@ function placementFigure() {
   s += `<text x="250" y="${by + 60}" font-family="${FONT}" font-weight="700" font-size="25" fill="${INK}">Албаны хувилбар</text>
         <text x="250" y="${by + 98}" font-family="${FONT}" font-size="23" fill="${INK}">3 ширхэг нууц дарааст товч (Ø 10 мм). Ханцуйнд товчны эх хэсгийг</text>
         <text x="250" y="${by + 130}" font-family="${FONT}" font-size="23" fill="${INK}">хар хөх утсаар оёж бэхэлнэ — тэмдэггүй үед бараг үл харагдана.</text>`;
-  s += `<g transform="translate(1300 ${by + 15}) scale(${bsc})"><path d="${pentagon(0)}" fill="#3d4228" stroke="#2f331c" stroke-width="7"/>
+  s += `<g transform="translate(1300 ${by + 15}) scale(${bsc})"><path d="${pentagon(0)}" fill="#5a4330" stroke="#3b2a1a" stroke-width="7"/>
     <path d="${pentagon(16)}" fill="url(#velcro)"/></g>`;
   s += `<text x="1440" y="${by + 60}" font-family="${FONT}" font-weight="700" font-size="25" fill="${INK}">Эрээн хувилбар</text>
         <text x="1440" y="${by + 98}" font-family="${FONT}" font-size="23" fill="${INK}">Ар тал бүхэлдээ дэгээт наалт (hook). Ханцуйн зөөлөн наалтын</text>
@@ -508,11 +545,9 @@ function companyFigure() {
   s += title(w / 2, 55, 'Ротын ялгах тэмдгийг ханцуйн тэмдэгт нэгтгэсэн нь');
   s += `<text x="${w / 2}" y="98" text-anchor="middle" font-family="${FONT}" font-size="24" fill="#55607a">Нэг өнгийн улаан хөвөө · Рот — араб тоо · Батальон — ром тоо · Албан тушаалд томилогдвол ромб/шеврон бүхий тэмдгээр солино</text>`;
   // committee symbol
-  s += `<g transform="translate(110 170) scale(2.6)">${committeeShield(true, 1)}</g>`;
-  s += label(240, 535 + 40, 'Сонсогчийн хорооны', 'бэлгэдэл (ханцуйнд зүүхгүй)', 28);
   const sc = 1.05;
   PLAIN.forEach((it, i) => {
-    const cx = 700 + i * 420;
+    const cx = w / 2 + (i - 1) * 460;
     s += `<g transform="translate(${cx - W * sc / 2} 150) scale(${sc})">${patch(it.spec, 'service')}</g>`;
     s += label(cx, 150 + H * sc + 60, it.t, it.s, 28);
   });
@@ -547,6 +582,7 @@ function seniorFigure() {
     'sleeve_place.png': placementFigure(),
     'image9.png': frontFigure(),
     'image4.png': companyFigure(),
+    'image3.png': courseFigure(),
     'senior_cadet.png': seniorFigure(),
   };
   fs.mkdirSync(OUT, { recursive: true });
