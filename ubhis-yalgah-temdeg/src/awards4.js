@@ -19,34 +19,44 @@ const mx = (x) => 2 * CX - x;
 
 // ---------- leaf / laurel ----------
 function leaf(x, y, rot, L, Wd) {
+  // broad leaf whose base is sunk into the stem (solid joint for casting)
   return `<g transform="translate(${x} ${y}) rotate(${rot})">
-    <path d="M0 0 C${L * 0.25} ${-Wd} ${L * 0.7} ${-Wd * 0.85} ${L} 0 C${L * 0.7} ${Wd * 0.85} ${L * 0.25} ${Wd} 0 0 Z"/>
-    <path d="M5 0 L${L - 10} 0" stroke="#7a5212" stroke-width="2.2" fill="none"/></g>`;
+    <path d="M-10 -7 C${L * 0.22} ${-Wd * 1.1} ${L * 0.72} ${-Wd * 0.9} ${L} 0 C${L * 0.72} ${Wd * 0.9} ${L * 0.22} ${Wd * 1.1} -10 7 Z"/>
+    <path d="M6 0 Q${L * 0.5} -3 ${L - 12} 0" stroke="#7a5212" stroke-width="2.6" fill="none"/></g>`;
 }
-function branch(pts, size, mirror) {
-  // pts: stem points from base to tip. Leaves on both sides pointing toward the tip.
+function smooth(pts, n = 3) {
+  // densify the stem (more leaves, overlapping)
+  const out = [pts[0]];
+  for (let i = 1; i < pts.length; i++) for (let k = 1; k <= n; k++) {
+    const t = k / n; out.push([pts[i - 1][0] + (pts[i][0] - pts[i - 1][0]) * t, pts[i - 1][1] + (pts[i][1] - pts[i - 1][1]) * t]);
+  }
+  return out;
+}
+function branch(pts0, size, mirror, stemW) {
+  const pts = smooth(pts0, 2);
   const P = mirror ? pts.map(([x, y]) => [mx(x), y]) : pts;
-  let g = `<path d="M${P.map(p => p.join(' ')).join(' L')}" fill="none" stroke="url(#gold)" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>`;
+  let leaves = '';
   for (let i = 1; i < P.length; i++) {
     const [x0, y0] = P[i - 1], [x1, y1] = P[i];
     const t = Math.atan2(y1 - y0, x1 - x0) * 180 / Math.PI;
-    const k = 1 - 0.35 * (i / P.length);
-    const L = size * k, Wd = size * 0.38 * k;
-    g += leaf(x1, y1, t - 34, L, Wd) + leaf(x1, y1, t + 34, L * 0.95, Wd * 0.95);
-    if (i % 3 === 0) g += `<circle cx="${(x0 + x1) / 2}" cy="${(y0 + y1) / 2}" r="7"/>`;
+    const k = 1 - 0.32 * (i / P.length);
+    const L = size * k, Wd = size * 0.46 * k;
+    leaves += leaf(x1, y1, t - 30, L, Wd) + leaf(x1, y1, t + 30, L * 0.96, Wd * 0.96);
   }
-  // tip leaf
   const [xa, ya] = P[P.length - 2], [xb, yb] = P[P.length - 1];
-  g += leaf(xb, yb, Math.atan2(yb - ya, xb - xa) * 180 / Math.PI, size * 0.7, size * 0.25);
-  return g;
+  leaves += leaf(xb, yb, Math.atan2(yb - ya, xb - xa) * 180 / Math.PI, size * 0.75, size * 0.32);
+  const stem = `<path d="M${P.map(p => p.join(' ')).join(' L')}" fill="none" stroke="url(#gold)" stroke-width="${stemW}" stroke-linecap="round" stroke-linejoin="round"/>`;
+  let berries = '';
+  P.forEach(([x, y], i) => { if (i % 4 === 2) berries += `<circle cx="${x}" cy="${y}" r="${stemW * 0.62}"/>`; });
+  return stem + leaves + berries;
 }
 const SIDE = [[205, 690], [150, 645], [105, 585], [78, 515], [66, 445], [70, 375], [86, 305], [112, 245], [146, 192]];
 const LOW = [[330, 700], [285, 692], [240, 680], [195, 664], [152, 648]];
 function laurels() {
-  return G(branch(SIDE, 86, false) + branch(SIDE, 86, true));
+  return G(branch(SIDE, 82, false, 20) + branch(SIDE, 82, true, 20));
 }
 function lowSprigs() {
-  return G(branch(LOW, 66, false) + branch(LOW, 66, true));
+  return G(branch(LOW, 62, false, 16) + branch(LOW, 62, true, 16));
 }
 
 // ---------- swords: straight blade, sabre hilt with knuckle bow ----------
