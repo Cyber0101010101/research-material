@@ -107,6 +107,21 @@ const HERO = { 1: 'Ц.ОЛЗВОЙ', 5: 'Ж.ЛХАГВАСҮРЭН', 9: 'Д.ХА
 const CO_BN = (co) => Math.ceil(co / 4);
 const ROMAN = { 1: 'I', 2: 'II', 3: 'III' };
 
+// stylised falcon with spread wings (ҮБХИС symbol), local box ~160 x 70 centred on 0,0
+function falcon(x, y, sc, fill, edge) {
+  // falcon displayed with raised wings, head turned left, hooked beak (ҮБХИС symbol)
+  const wing = 'M-4 -6 C-14 -18 -30 -32 -54 -44 C-51 -36 -48 -31 -45 -27 L-56 -23 C-50 -17 -45 -14 -40 -12 L-49 -6 C-41 -2 -33 0 -26 0 L-32 6 C-22 9 -12 9 -5 6 Z';
+  return `<g transform="translate(${x} ${y}) scale(${sc})" fill="${fill}" stroke="${edge}" stroke-width="1.8" stroke-linejoin="round">
+    <path d="${wing}"/><path d="${wing}" transform="scale(-1 1)"/>
+    <path d="M0 -16 C10 -14 12 0 10 14 L16 34 L6 30 L0 40 L-6 30 L-16 34 L-10 14 C-12 0 -10 -14 0 -16 Z"/>
+    <path d="M-4 4 Q0 8 4 4 M-5 12 Q0 16 5 12 M-5 20 Q0 24 5 20" fill="none" stroke="${edge}" stroke-width="1.4"/>
+    <circle cx="0" cy="-24" r="9"/>
+    <path d="M-7 -27 Q-17 -27 -16 -18 L-11 -21.5 L-7 -21 Z"/>
+    <circle cx="-3.5" cy="-26" r="1.9" fill="${edge}" stroke="none"/>
+    <path d="M-4 -23 L-5 -17" stroke="${edge}" stroke-width="2" fill="none"/>
+  </g>`;
+}
+
 /**
  * spec: {line:'off'|'sgt'|'plain', n, frame, wreath, arcs, srhomb, unit}
  * unit: {co:N} | {bn:N} | {cmd:true}
@@ -116,7 +131,8 @@ function patch(spec, variant) {
   const svc = variant === 'service';
   const u = spec.unit || { co: 1 };
   const bnKey = u.cmd ? 'c' : (u.bn || CO_BN(u.co));
-  const bcol = BN[bnKey][svc ? 'svc' : 'camo'];
+  const bcol = svc ? '#c8102e' : '#2f331c';      // one colour for all units
+  const ring = svc ? 'url(#gold)' : '#c8b07a';
   const base = svc ? 'url(#navy)' : 'url(#camo)';
   const edge = svc ? bcol : '#2f331c';
   const offFill = svc ? 'url(#gold)' : '#c8b07a';
@@ -128,31 +144,34 @@ function patch(spec, variant) {
   const cx = W / 2;
   let g = '';
   g += `<path d="${pentagon(0)}" fill="${base}" stroke="${edge}" stroke-width="9" stroke-linejoin="round"/>`;
-  if (!svc) {
-    g += `<path d="${pentagon(0)}" fill="#000" opacity="0.08"/>`;
-    g += `<path d="${pentagon(0)}" fill="none" stroke="${bcol}" stroke-width="3" opacity="0.9" transform="translate(${W * 0.035} ${H * 0.03}) scale(0.93)"/>`;
-  }
+  if (!svc) g += `<path d="${pentagon(0)}" fill="#000" opacity="0.08"/>`;
   if (spec.frame) g += `<path d="${pentagon(15)}" fill="none" stroke="${frameCol}" stroke-width="8" stroke-linejoin="miter"/>`;
   // unit marker: top disc (leaders) or big number (ordinary cadet)
   const unitTxt = u.cmd ? 'СХ' : (u.bn ? ROMAN[u.bn] : String(u.co));
-  const bottom = u.cmd ? 'ХОРОО' : (u.bn ? `${u.bn}-Р БАТАЛЬОН` : (HERO[u.co] || 'ҮБХИС'));
+  // top = own unit (company: Arabic, battalion: Roman), bottom = parent level
+  const bottom = u.cmd ? 'ХОРОО' : (u.bn ? 'БАТАЛЬОН' : `${ROMAN[CO_BN(u.co)]} БАТАЛЬОН`);
   if (spec.line === 'plain') {
-    g += `<circle cx="${cx}" cy="185" r="66" fill="none" stroke="${svc ? bcol : bcol}" stroke-width="8"/>`;
+    g += `<circle cx="${cx}" cy="185" r="66" fill="none" stroke="${ring}" stroke-width="8"/>`;
     g += `<text x="${cx}" y="215" text-anchor="middle" font-family="${FONT}" font-weight="700" font-size="${unitTxt.length > 1 ? 70 : 88}" fill="${textCol}">${unitTxt}</text>`;
     g += `<text x="${cx}" y="282" text-anchor="middle" font-family="${FONT}" font-weight="700" font-size="22" letter-spacing="4" fill="${textCol}">РОТ</text>`;
   } else {
-    g += `<circle cx="${cx}" cy="60" r="24" fill="${svc ? '#121a33' : '#3d4228'}" stroke="${bcol}" stroke-width="5"/>`;
-    g += `<text x="${cx}" y="${unitTxt.length > 2 ? 67 : 69}" text-anchor="middle" font-family="${FONT}" font-weight="700" font-size="${unitTxt.length > 2 ? 19 : 25}" fill="${textCol}">${unitTxt}</text>`;
+    if (spec.falcon) {
+      g += falcon(cx, 86, 0.82, svc ? 'url(#gold)' : '#c8b07a', svc ? '#7a5a0c' : '#2f331c');
+    } else {
+      g += `<circle cx="${cx}" cy="60" r="24" fill="${svc ? '#121a33' : '#3d4228'}" stroke="${ring}" stroke-width="4"/>`;
+      g += `<text x="${cx}" y="${unitTxt.length > 2 ? 67 : 69}" text-anchor="middle" font-family="${FONT}" font-weight="700" font-size="${unitTxt.length > 2 ? 19 : 25}" fill="${textCol}">${unitTxt}</text>`;
+    }
   }
   if (spec.line === 'off') {
-    const rw = 34, rh = 46, gap = 4;
+    const big = !spec.falcon;
+    const rw = big ? 34 : 30, rh = big ? 46 : 40, gap = big ? 4 : 3;
     const n = spec.n;
     const total = n * rh + (n - 1) * gap;
-    const top = spec.wreath ? 90 : 94 + (206 - total) / 2;
+    const top = spec.falcon ? 126 : (spec.wreath ? 90 : 94 + (206 - total) / 2);
     for (let i = 0; i < n; i++) {
       const cy = top + rh / 2 + i * (rh + gap);
       g += rhomb(cx, cy, rw, rh, offFill, offEdge, svc);
-      if (spec.wreath && i === n - 1) g += wreath(cx, cy + 2, 31, offFill);
+      if (spec.wreath && i === n - 1) g += wreath(cx, cy + 2, spec.falcon ? 27 : 31, offFill);
     }
   } else if (spec.line === 'sgt') {
     const cw = 150, t = 15, step = 22, drop = 150 * 0.38;
@@ -178,7 +197,7 @@ const OFF = [
   { t: 'Батальоны дарга', s: '1-р батальон', spec: { line: 'off', n: 3, frame: true, unit: { bn: 1 } } },
   { t: 'Хорооны хэлтсийн,', s: 'зөвлөлийн дарга', spec: { line: 'off', n: 4, unit: { cmd: true } } },
   { t: 'Хорооны орлогч,', s: 'штабын дарга', spec: { line: 'off', n: 4, frame: true, unit: { cmd: true } } },
-  { t: 'Хорооны ахлах', s: 'сонсогч', spec: { line: 'off', n: 4, frame: true, wreath: true, unit: { cmd: true } } },
+  { t: 'Хорооны ахлах', s: 'сонсогч', spec: { line: 'off', n: 4, frame: true, wreath: true, falcon: true, unit: { cmd: true } } },
 ];
 const SGT = [
   { t: 'Багийн ахлагч', s: '1-р рот · 2-р курс', spec: { line: 'sgt', n: 1, unit: { co: 1 } } },
@@ -190,9 +209,9 @@ const SGT = [
   { t: 'Хорооны ахлах', s: 'түрүүч', spec: { line: 'sgt', n: 3, arcs: 2, srhomb: true, unit: { cmd: true } } },
 ];
 const PLAIN = [
-  { t: '1-р рот · 1-р батальон', s: '(улаан хөвөө)', spec: { line: 'plain', unit: { co: 1 } } },
-  { t: '5-р рот · 2-р батальон', s: '(хөх хөвөө)', spec: { line: 'plain', unit: { co: 5 } } },
-  { t: '9-р рот · 3-р батальон', s: '(алтлаг шар хөвөө)', spec: { line: 'plain', unit: { co: 9 } } },
+  { t: '1-р рот', s: 'I батальон', spec: { line: 'plain', unit: { co: 1 } } },
+  { t: '5-р рот', s: 'II батальон', spec: { line: 'plain', unit: { co: 5 } } },
+  { t: '9-р рот', s: 'III батальон', spec: { line: 'plain', unit: { co: 9 } } },
 ];
 
 function label(x, y, t, s, size = 30) {
@@ -229,7 +248,7 @@ function camoFigure() {
   const h = 150 + 2 * cellH + 30;
   let s = `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}">${defs()}<rect width="${w}" height="${h}" fill="#fff"/>`;
   s += title(w / 2, 55, 'Эрээн (өнгөлөн далдлах) хувцасны хувилбар — бүдэг өнгө, наалттай');
-  s += `<text x="${w / 2}" y="100" text-anchor="middle" font-family="${FONT}" font-size="26" fill="#55607a">Алтлаг → хүрэн шар · Мөнгөлөг → хар · Батальоны өнгө → бараан нарийн хүрээ, дугуйн хүрээ · Хэмжээ, байршил албаны хувилбартай ижил</text>`;
+  s += `<text x="${w / 2}" y="100" text-anchor="middle" font-family="${FONT}" font-size="26" fill="#55607a">Алтлаг → хүрэн шар · Мөнгөлөг → хар · Хөвөө → хар хүрэн · Хэмжээ, тоо, байршил албаны хувилбартай ижил</text>`;
   all.forEach((it, i) => {
     const r = i < 8 ? 0 : 1, c = i < 8 ? i : i - 8;
     const inRow = 8;
@@ -390,8 +409,8 @@ function placementFigure() {
   s += dimV(bx - 18, posY, posY + H * psc, '9 см', -1);
   s += `<line x1="${cxB + 50}" y1="${eY + 60}" x2="${bx + sw + 50}" y2="${eY + 60}" stroke="#8a93a6" stroke-width="2"/>` + tag(bx + sw + 60, eY + 67, 'Ханцуйн албан ёсны тэмдэг (одоогийн)');
   s += callout(1, cxB + 70, posY + 120, bx + sw + 80, posY + 120, 'Ротын ба албан тушаалын тэмдэг');
-  s += tag(bx + sw + 60, posY + 160, '6 × 9 см · хөвөө = батальоны өнгө');
-  s += tag(bx + sw + 60, posY + 192, 'дээд дугуй = ротын дугаар');
+  s += tag(bx + sw + 60, posY + 160, '6 × 9 см · хар хөх суурь, улаан хөвөө');
+  s += tag(bx + sw + 60, posY + 192, 'рот — араб тоо, батальон — ром тоо');
   s += tag(bx + sw + 60, posY + 224, 'хатгамал · 3 нууц дарааст товчоор');
   s += tag(bx + sw + 60, posY + 280, 'Албан тушаалгүй сонсогч ижил байранд', INK);
   s += tag(bx + sw + 60, posY + 312, 'ротын тэмдэг (ромб, шевронгүй) зүүнэ', INK);
@@ -480,7 +499,7 @@ function companyFigure() {
   const w = 1950, h = 900;
   let s = `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}">${defs()}<rect width="${w}" height="${h}" fill="#fff"/>`;
   s += title(w / 2, 55, 'Ротын ялгах тэмдгийг ханцуйн тэмдэгт нэгтгэсэн нь');
-  s += `<text x="${w / 2}" y="98" text-anchor="middle" font-family="${FONT}" font-size="24" fill="#55607a">Хөвөө = батальоны өнгө · Дугаар = рот · Доод бичиг = нэрэмжит баатар · Албан тушаалд томилогдвол ромб/шеврон бүхий тэмдгээр солино</text>`;
+  s += `<text x="${w / 2}" y="98" text-anchor="middle" font-family="${FONT}" font-size="24" fill="#55607a">Нэг өнгийн улаан хөвөө · Рот — араб тоо · Батальон — ром тоо · Албан тушаалд томилогдвол ромб/шеврон бүхий тэмдгээр солино</text>`;
   // committee symbol
   s += `<g transform="translate(110 170) scale(2.6)">${committeeShield(true, 1)}</g>`;
   s += label(240, 535 + 40, 'Сонсогчийн хорооны', 'бэлгэдэл (ханцуйнд зүүхгүй)', 28);
@@ -493,15 +512,15 @@ function companyFigure() {
   // legend for leader disc
   s += `<rect x="60" y="720" width="${w - 120}" height="150" rx="14" fill="#f4f6fa" stroke="#d5dae4"/>`;
   s += `<text x="100" y="770" font-family="${FONT}" font-weight="700" font-size="26" fill="${INK}">Албан тушаалын тэмдэг дээрх дээд дугуй:</text>`;
-  s += `<text x="100" y="815" font-family="${FONT}" font-size="25" fill="${INK}">Ротын түвшин — ротын дугаар (1–12) · Батальоны түвшин — батальоны дугаар (I, II, III) · Хорооны түвшин — «СХ», цагаан хөвөө</text>`;
-  s += `<text x="100" y="852" font-family="${FONT}" font-size="25" fill="${INK}">Доод бичиг: рот — нэрэмжит баатрын нэр · батальон — «N-Р БАТАЛЬОН» · хороо — «ХОРОО»</text>`;
+  s += `<text x="100" y="815" font-family="${FONT}" font-size="25" fill="${INK}">Ротын түвшин — араб тоо (1–12) · Батальоны түвшин — ром тоо (I, II, III) · Хорооны түвшин — «СХ» · Хорооны ахлах сонсогч — шонхор шувуу</text>`;
+  s += `<text x="100" y="852" font-family="${FONT}" font-size="25" fill="${INK}">Доод бичиг нь харьяа дээд нэгжийг заана: ротын түвшинд «II БАТАЛЬОН», батальоны түвшинд «БАТАЛЬОН», хорооны түвшинд «ХОРОО»</text>`;
   return s + '</svg>';
 }
 
 (async () => {
   const figs = {
-    'image1.png': gridFigure(OFF, 'service', 'Сонсогч офицерын шугам (4-р курс) — алтлаг ромб · албаны хувцас', 'Баруун ханцуй · 6 × 9 см · хөвөө = батальоны өнгө · дээд дугуй = рот / батальон / хороо · доод бичиг = нэрэмжит баатар'),
-    'image2.png': gridFigure(SGT, 'service', 'Сонсогч түрүүчийн шугам (2–3-р курс) — мөнгөлөг шеврон · албаны хувцас', 'Баруун ханцуй · 6 × 9 см · хөвөө = батальоны өнгө · дээд дугуй = рот / батальон / хороо · доод бичиг = нэрэмжит баатар'),
+    'image1.png': gridFigure(OFF, 'service', 'Сонсогч офицерын шугам (4-р курс) — алтлаг ромб · албаны хувцас', 'Баруун ханцуй · 6 × 9 см · улаан хөвөө · дээд дугуй: рот — араб тоо, батальон — ром тоо · доод бичиг: харьяа батальон / хороо'),
+    'image2.png': gridFigure(SGT, 'service', 'Сонсогч түрүүчийн шугам (2–3-р курс) — мөнгөлөг шеврон · албаны хувцас', 'Баруун ханцуй · 6 × 9 см · улаан хөвөө · дээд дугуй: рот — араб тоо, батальон — ром тоо · доод бичиг: харьяа батальон / хороо'),
     'sleeve_camo.png': camoFigure(),
     'sleeve_place.png': placementFigure(),
     'image9.png': frontFigure(),
