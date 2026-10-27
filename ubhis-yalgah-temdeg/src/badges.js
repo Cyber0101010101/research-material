@@ -5,6 +5,12 @@ const fs = require('fs');
 const path = require('path');
 
 const OUT = process.argv[2];
+// falcon cut out of the ҮБХИС logo (gold) and a subdued tan version for camouflage
+const FALCON = {
+  svc: 'data:image/png;base64,' + fs.readFileSync(path.join(OUT, 'falcon_gold.png')).toString('base64'),
+  camo: 'data:image/png;base64,' + fs.readFileSync(path.join(OUT, 'falcon_camo.png')).toString('base64'),
+};
+const FALCON_AR = 880 / 276;
 const FONT = "'Liberation Sans', Arial, sans-serif";
 const INK = '#1c2740';
 
@@ -156,7 +162,8 @@ function patch(spec, variant) {
     g += `<text x="${cx}" y="282" text-anchor="middle" font-family="${FONT}" font-weight="700" font-size="22" letter-spacing="4" fill="${textCol}">РОТ</text>`;
   } else {
     if (spec.falcon) {
-      g += falcon(cx, 86, 0.82, svc ? 'url(#gold)' : '#c8b07a', svc ? '#7a5a0c' : '#2f331c');
+      const fw = 184, fh = fw / FALCON_AR;
+      g += `<image href="${FALCON[svc ? 'svc' : 'camo']}" x="${cx - fw / 2}" y="48" width="${fw}" height="${fh}" preserveAspectRatio="xMidYMid meet"/>`;
     } else {
       g += `<circle cx="${cx}" cy="60" r="24" fill="${svc ? '#121a33' : '#3d4228'}" stroke="${ring}" stroke-width="4"/>`;
       g += `<text x="${cx}" y="${unitTxt.length > 2 ? 67 : 69}" text-anchor="middle" font-family="${FONT}" font-weight="700" font-size="${unitTxt.length > 2 ? 19 : 25}" fill="${textCol}">${unitTxt}</text>`;
@@ -164,10 +171,10 @@ function patch(spec, variant) {
   }
   if (spec.line === 'off') {
     const big = !spec.falcon;
-    const rw = big ? 34 : 30, rh = big ? 46 : 40, gap = big ? 4 : 3;
+    const rw = big ? 34 : 31, rh = big ? 46 : 42, gap = 4;
     const n = spec.n;
     const total = n * rh + (n - 1) * gap;
-    const top = spec.falcon ? 126 : (spec.wreath ? 90 : 94 + (206 - total) / 2);
+    const top = spec.falcon ? 116 : (spec.wreath ? 90 : 94 + (206 - total) / 2);
     for (let i = 0; i < n; i++) {
       const cy = top + rh / 2 + i * (rh + gap);
       g += rhomb(cx, cy, rw, rh, offFill, offEdge, svc);
@@ -197,7 +204,7 @@ const OFF = [
   { t: 'Батальоны дарга', s: '1-р батальон', spec: { line: 'off', n: 3, frame: true, unit: { bn: 1 } } },
   { t: 'Хорооны хэлтсийн,', s: 'зөвлөлийн дарга', spec: { line: 'off', n: 4, unit: { cmd: true } } },
   { t: 'Хорооны орлогч,', s: 'штабын дарга', spec: { line: 'off', n: 4, frame: true, unit: { cmd: true } } },
-  { t: 'Хорооны ахлах', s: 'сонсогч', spec: { line: 'off', n: 4, frame: true, wreath: true, falcon: true, unit: { cmd: true } } },
+  { t: 'Хорооны ахлах', s: 'сонсогч', spec: { line: 'off', n: 4, frame: true, falcon: true, unit: { cmd: true } } },
 ];
 const SGT = [
   { t: 'Багийн ахлагч', s: '1-р рот · 2-р курс', spec: { line: 'sgt', n: 1, unit: { co: 1 } } },
@@ -517,6 +524,21 @@ function companyFigure() {
   return s + '</svg>';
 }
 
+function seniorFigure() {
+  const w = 1400, h = 900;
+  let s = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}">${defs()}<rect width="${w}" height="${h}" fill="#fff"/>`;
+  s += title(w / 2, 58, 'Хорооны ахлах сонсогчийн ялгах тэмдэг', 40);
+  s += `<text x="${w / 2}" y="104" text-anchor="middle" font-family="${FONT}" font-size="25" fill="#55607a">ҮБХИС-ийн бэлгэдэл шонхор шувуу · 4 алтлаг ромб (хорооны түвшин) · алтан хүрээ (дарга) · 6 × 9 см · баруун ханцуй</text>`;
+  const spec = { line: 'off', n: 4, frame: true, falcon: true, unit: { cmd: true } };
+  const sc = 1.75;
+  [['service', 'Албаны хувцас', 'хар хөх суурь, улаан хөвөө, алтлаг хатгамал'], ['camo', 'Эрээн хувцас', 'бүдэг өнгө, хүрэн шар утас, наалттай']].forEach(([v, t, sub], i) => {
+    const cx = 380 + i * 640;
+    s += `<g transform="translate(${cx - W * sc / 2} 140) scale(${sc})">${patch(spec, v)}</g>`;
+    s += label(cx, 140 + H * sc + 60, t, sub, 30);
+  });
+  return s + '</svg>';
+}
+
 (async () => {
   const figs = {
     'image1.png': gridFigure(OFF, 'service', 'Сонсогч офицерын шугам (4-р курс) — алтлаг ромб · албаны хувцас', 'Баруун ханцуй · 6 × 9 см · улаан хөвөө · дээд дугуй: рот — араб тоо, батальон — ром тоо · доод бичиг: харьяа батальон / хороо'),
@@ -525,6 +547,7 @@ function companyFigure() {
     'sleeve_place.png': placementFigure(),
     'image9.png': frontFigure(),
     'image4.png': companyFigure(),
+    'senior_cadet.png': seniorFigure(),
   };
   fs.mkdirSync(OUT, { recursive: true });
   const browser = await chromium.launch();
