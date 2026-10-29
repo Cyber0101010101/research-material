@@ -120,7 +120,8 @@ def main():
                 for p in cell.paragraphs:
                     p.alignment = WD_ALIGN_PARAGRAPH.LEFT
                     for run in p.runs:
-                        run.font.size = Pt(10)
+                        # 8-аас олон баганатай хүснэгтийг жижиг үсгээр
+                        run.font.size = Pt(8 if len(table.columns) > 8 else 10)
                         run.font.name = FONT
                         if i == 0:
                             run.font.bold = True
